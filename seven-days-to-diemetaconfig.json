@@ -1,32 +1,8 @@
 [
     {
-        "ConfigFile": "seven-days-settings184.xml",
+        "ConfigFile": "serverconfig.xml",
         "AutoMap": true,
-        "ConfigType": "xml"
-    },
-    {
-        "ConfigFile": "seven-days-settings196.xml",
-        "AutoMap": true,
-        "ConfigType": "xml"
-    },
-    {
-        "ConfigFile": "seven-days-settings200-203.xml",
-        "AutoMap": true,
-        "ConfigType": "xml"
-    },
-    {
-        "ConfigFile": "seven-days-settings204.xml",
-        "AutoMap": true,
-        "ConfigType": "xml"
-    },
-    {
-        "ConfigFile": "seven-days-settings-undead-legacy-stable.xml",
-        "AutoMap": true,
-        "ConfigType": "xml"
-    },
-    {
-        "ConfigFile": "seven-days-settings-undead-legacy-experimental.xml",
-        "AutoMap": true,
+        "Importable": true,
         "ConfigType": "xml"
     }
 ]
