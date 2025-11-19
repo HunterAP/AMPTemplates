@@ -46,6 +46,12 @@
         "IncludeInCommandLine": false,
         "DefaultValue": "1",
         "Placeholder": "1",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*min-character-level = .*",
+                "Replace": "[ruleset]\n\tmin-character-level = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -63,6 +69,12 @@
         "IncludeInCommandLine": false,
         "DefaultValue": "40",
         "Placeholder": "40",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*max-character-level = .*",
+                "Replace": "[ruleset]\n\tmax-character-level = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -80,7 +92,13 @@
         "EnumValues": {
             "False": "false",
             "True": "true"
-        }
+        },
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.login\\.player-dm\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[server.login.player-dm]\n\tenabled = {{value}}"
+            }
+        ]
     },
     {
         "DisplayName": "NWSync URL",
@@ -163,12 +181,17 @@
         "Keywords": "server,name,servername",
         "FieldName": "servername",
         "InputType": "text",
-        "ParamFieldName": "server.identity.name",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "Required": true,
         "DefaultValue": "AMP Powered NWNEE Server",
         "Placeholder": "AMP Powered NWNEE Server",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.identity\\]\\s*\\n\\s*name = .*",
+                "Replace": "[server.identity]\n\tname = \"{{value}}\""
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -179,10 +202,15 @@
         "Keywords": "public,server,publicserver",
         "FieldName": "publicserver",
         "InputType": "checkbox",
-        "ParamFieldName": "server.identity.public",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.identity\\]\\s*\\n\\s*public = .*",
+                "Replace": "[server.identity]\n\tpublic = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -196,12 +224,17 @@
         "Keywords": "gametype,type",
         "FieldName": "gametype",
         "InputType": "enum",
-        "ParamFieldName": "server.identity.game-type",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "Required": true,
         "DefaultValue": "0",
         "Placeholder": "0",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.identity\\]\\s*\\n\\s*game-type = .*",
+                "Replace": "[server.identity]\n\tgame-type = {{value}}"
+            }
+        ],
         "EnumValues": {
             "0": "Action",
             "1": "Story",
@@ -233,12 +266,17 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "255",
-        "ParamFieldName": "server.login.max-players",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "96",
         "Placeholder": "96",
         "Suffix": "players",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.login\\]\\s*\\n\\s*max-players = .*",
+                "Replace": "[server.login]\n\tmax-players = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -249,11 +287,16 @@
         "Keywords": "player,password,playerpassword",
         "FieldName": "playerpassword",
         "InputType": "password",
-        "ParamFieldName": "server.login.player-password",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "SkipIfEmpty": true,
         "DefaultValue": "",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.login\\]\\s*\\n\\s*player-password = .*",
+                "Replace": "[server.login]\n\tplayer-password = \"{{value}}\""
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -269,6 +312,12 @@
         "IncludeInCommandLine": false,
         "SkipIfEmpty": true,
         "DefaultValue": "",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.login\\]\\s*\\n\\s*dm-password = .*",
+                "Replace": "[server.login]\n\tdm-password = \"{{value}}\""
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -281,12 +330,17 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "65535",
-        "ParamFieldName": "server.net.port",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "Hidden": true,
         "DefaultValue": "{{$ServerPort}}",
         "Placeholder": "5121",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.net\\]\\s*\\n\\s*port = .*",
+                "Replace": "[server.net]\n\tport = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -297,10 +351,15 @@
         "Keywords": "autosave,enabled",
         "FieldName": "autosaveenabled",
         "InputType": "checkbox",
-        "ParamFieldName": "server.autosave.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.autosave\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[server.autosave]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -316,12 +375,17 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "30",
-        "ParamFieldName": "server.autosave.interval",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "5",
         "Placeholder": "5",
         "Suffix": "minutes",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.autosave\\]\\s*\\n\\s*interval = .*",
+                "Replace": "[server.autosave]\n\tinterval = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -332,10 +396,15 @@
         "Keywords": "reload,empty,reloadwhenempty",
         "FieldName": "reloadwhenempty",
         "InputType": "checkbox",
-        "ParamFieldName": "server.reload-when-empty",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*reload-when-empty = .*",
+                "Replace": "[server]\n\treload-when-empty = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -349,10 +418,15 @@
         "Keywords": "pvp,player,versus,player",
         "FieldName": "pvp",
         "InputType": "enum",
-        "ParamFieldName": "server.pvp-mode",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "1",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*pvp-mode = .*",
+                "Replace": "[server]\n\tpvp-mode = {{value}}"
+            }
+        ],
         "EnumValues": {
             "0": "No PvP",
             "1": "Party",
@@ -367,10 +441,15 @@
         "Keywords": "oneparty,party",
         "FieldName": "oneparty",
         "InputType": "checkbox",
-        "ParamFieldName": "server.one-party-only",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*one-party-only = .*",
+                "Replace": "[server]\n\tone-party-only = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -384,10 +463,15 @@
         "Keywords": "vault,servervault",
         "FieldName": "servervault",
         "InputType": "enum",
-        "ParamFieldName": "server.vault.mode",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "1",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.vault\\]\\s*\\n\\s*mode = .*",
+                "Replace": "[server.vault]\n\tmode = {{value}}"
+            }
+        ],
         "EnumValues": {
             "0": "Local characters only",
             "1": "Server characters only"
@@ -401,10 +485,15 @@
         "Keywords": "vault,player,name",
         "FieldName": "vaultbyplayername",
         "InputType": "checkbox",
-        "ParamFieldName": "server.vault.by-player-name",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.vault\\]\\s*\\n\\s*by-player-name = .*",
+                "Replace": "[server.vault]\n\tby-player-name = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -418,10 +507,15 @@
         "Keywords": "sticky,player,names",
         "FieldName": "stickyplayernames",
         "InputType": "checkbox",
-        "ParamFieldName": "server.vault.sticky-player-names",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.vault\\]\\s*\\n\\s*sticky-player-names = .*",
+                "Replace": "[server.vault]\n\tsticky-player-names = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -435,10 +529,15 @@
         "Keywords": "suppress,base,servervault",
         "FieldName": "suppressbaseservervault",
         "InputType": "checkbox",
-        "ParamFieldName": "server.vault.suppress-base",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.vault\\]\\s*\\n\\s*suppress-base = .*",
+                "Replace": "[server.vault]\n\tsuppress-base = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -452,10 +551,15 @@
         "Keywords": "backup,server,characters",
         "FieldName": "backupservercharacters",
         "InputType": "checkbox",
-        "ParamFieldName": "server.vault.backup-server-characters",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.vault\\]\\s*\\n\\s*backup-server-characters = .*",
+                "Replace": "[server.vault]\n\tbackup-server-characters = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -469,10 +573,15 @@
         "Keywords": "save,games,store,characters",
         "FieldName": "savegamesstorecharacters",
         "InputType": "checkbox",
-        "ParamFieldName": "server.savegames-store-characters",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*savegames-store-characters = .*",
+                "Replace": "[server]\n\tsavegames-store-characters = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -486,10 +595,15 @@
         "Keywords": "vault,characters,only",
         "FieldName": "vaultcharactersonly",
         "InputType": "checkbox",
-        "ParamFieldName": "server.savegames-vault-characters-only",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*savegames-vault-characters-only = .*",
+                "Replace": "[server]\n\tsavegames-vault-characters-only = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -503,10 +617,15 @@
         "Keywords": "show,dm,join,messages",
         "FieldName": "showdmjoinmessages",
         "InputType": "checkbox",
-        "ParamFieldName": "server.show-dm-join-messages",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*show-dm-join-messages = .*",
+                "Replace": "[server]\n\tshow-dm-join-messages = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -520,10 +639,15 @@
         "Keywords": "show,player,join,messages",
         "FieldName": "showplayerjoinmessages",
         "InputType": "checkbox",
-        "ParamFieldName": "server.show-player-join-messages",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*show-player-join-messages = .*",
+                "Replace": "[server]\n\tshow-player-join-messages = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -537,10 +661,15 @@
         "Keywords": "pause,play,pauseandplay",
         "FieldName": "pauseandplay",
         "InputType": "checkbox",
-        "ParamFieldName": "server.allow-player-pausing",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\]\\s*\\n\\s*allow-player-pausing = .*",
+                "Replace": "[server]\n\tallow-player-pausing = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -554,10 +683,15 @@
         "Keywords": "campaign,db,compression",
         "FieldName": "campaigndbcompression",
         "InputType": "checkbox",
-        "ParamFieldName": "campaigndb.storage.compression.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[campaigndb\\.storage\\.compression\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[campaigndb.storage.compression]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -571,10 +705,15 @@
         "Keywords": "codepage",
         "FieldName": "codepage",
         "InputType": "enum",
-        "ParamFieldName": "game.language.codepage",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[game\\.language\\]\\s*\\n\\s*codepage = .*",
+                "Replace": "[game.language]\n\tcodepage = \"{{value}}\""
+            }
+        ],
         "EnumValues": {
             "": "Default",
             "cp1250": "CP1250",
@@ -590,10 +729,15 @@
         "Keywords": "language,override",
         "FieldName": "languageoverride",
         "InputType": "enum",
-        "ParamFieldName": "game.language.override",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[game\\.language\\]\\s*\\n\\s*override = .*",
+                "Replace": "[game.language]\n\toverride = \"{{value}}\""
+            }
+        ],
         "EnumValues": {
             "": "Default",
             "en": "English",
@@ -608,14 +752,19 @@
         "DisplayName": "Difficulty Level",
         "Category": "Neverwinter Nights:stadia_controller",
         "Subcategory": "Ruleset:settings:3",
-        "Description": "Sets the server difficulty Level",
-        "Keywords": "difficulty",
-        "FieldName": "difficulty",
+        "Description": "Sets the overall difficulty level for the game, affecting enemy strength, loot, and player progression.",
+        "Keywords": "difficulty,level",
+        "FieldName": "difficultylevel",
         "InputType": "enum",
-        "ParamFieldName": "ruleset.difficulty",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "3",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*difficulty = .*",
+                "Replace": "[ruleset]\n\tdifficulty = {{value}}"
+            }
+        ],
         "EnumValues": {
             "1": "Easy",
             "2": "Normal",
@@ -631,10 +780,15 @@
         "Keywords": "elc,enforce,legal,characters",
         "FieldName": "elc",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.enforce-legal-characters",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*enforce-legal-characters = .*",
+                "Replace": "[ruleset]\n\tenforce-legal-characters = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -648,10 +802,15 @@
         "Keywords": "ilr,enforce,item,level,restrictions",
         "FieldName": "ilr",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.item-level-restrictions",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*item-level-restrictions = .*",
+                "Replace": "[ruleset]\n\titem-level-restrictions = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -665,10 +824,15 @@
         "Keywords": "natural,ones,fail,saving,throws",
         "FieldName": "naturalonesfailsavingthrows",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.natural-ones-fail-saving-throws",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*natural-ones-fail-saving-throws = .*",
+                "Replace": "[ruleset]\n\tnatural-ones-fail-saving-throws = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -682,10 +846,15 @@
         "Keywords": "validate,spells",
         "FieldName": "validatespells",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.validate-spells",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*validate-spells = .*",
+                "Replace": "[ruleset]\n\tvalidate-spells = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -699,10 +868,15 @@
         "Keywords": "always,roll,max,hitpoints,levelup",
         "FieldName": "alwaysrollmaxhitpoints",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.always-roll-max-hitpoints-on-levelup",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*always-roll-max-hitpoints-on-levelup = .*",
+                "Replace": "[ruleset]\n\talways-roll-max-hitpoints-on-levelup = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -716,10 +890,15 @@
         "Keywords": "hide,hitpoints,gained,levelup",
         "FieldName": "hidehitpointsgained",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.hide-hitpoints-gained-on-levelup",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*hide-hitpoints-gained-on-levelup = .*",
+                "Replace": "[ruleset]\n\thide-hitpoints-gained-on-levelup = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -733,10 +912,15 @@
         "Keywords": "show,active,effects",
         "FieldName": "showactiveeffects",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.show-active-effects",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*show-active-effects = .*",
+                "Replace": "[ruleset]\n\tshow-active-effects = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -750,10 +934,15 @@
         "Keywords": "show,challenge,ratings",
         "FieldName": "showchallengeratings",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.show-challenge-ratings",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\]\\s*\\n\\s*show-challenge-ratings = .*",
+                "Replace": "[ruleset]\n\tshow-challenge-ratings = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -769,11 +958,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "255",
-        "ParamFieldName": "ruleset.combat.max-ability-bonus",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "12",
         "Placeholder": "12",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.combat\\]\\s*\\n\\s*max-ability-bonus = .*",
+                "Replace": "[ruleset.combat]\n\tmax-ability-bonus = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -786,11 +980,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "255",
-        "ParamFieldName": "ruleset.combat.max-ability-penalty",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "30",
         "Placeholder": "30",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.combat\\]\\s*\\n\\s*max-ability-penalty = .*",
+                "Replace": "[ruleset.combat]\n\tmax-ability-penalty = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -803,11 +1002,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "255",
-        "ParamFieldName": "ruleset.combat.max-attack-bonus",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "20",
         "Placeholder": "20",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.combat\\]\\s*\\n\\s*max-attack-bonus = .*",
+                "Replace": "[ruleset.combat]\n\tmax-attack-bonus = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -820,11 +1024,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "255",
-        "ParamFieldName": "ruleset.combat.max-damage-bonus",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "100",
         "Placeholder": "100",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.combat\\]\\s*\\n\\s*max-damage-bonus = .*",
+                "Replace": "[ruleset.combat]\n\tmax-damage-bonus = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -837,11 +1046,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "255",
-        "ParamFieldName": "ruleset.combat.max-saving-throw-bonus",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "20",
         "Placeholder": "20",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.combat\\]\\s*\\n\\s*max-saving-throw-bonus = .*",
+                "Replace": "[ruleset.combat]\n\tmax-saving-throw-bonus = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -854,11 +1068,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "255",
-        "ParamFieldName": "ruleset.combat.max-skill-bonus",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "50",
         "Placeholder": "50",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.combat\\]\\s*\\n\\s*max-skill-bonus = .*",
+                "Replace": "[ruleset.combat]\n\tmax-skill-bonus = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -869,10 +1088,15 @@
         "Keywords": "sticky,combat,modes",
         "FieldName": "stickycombatmodes",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.combat.sticky-modes",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.combat\\]\\s*\\n\\s*sticky-modes = .*",
+                "Replace": "[ruleset.combat]\n\tsticky-modes = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -886,10 +1110,15 @@
         "Keywords": "always,reset,encounters",
         "FieldName": "alwaysresetencounters",
         "InputType": "checkbox",
-        "ParamFieldName": "ruleset.encounters.always-reset",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[ruleset\\.encounters\\]\\s*\\n\\s*always-reset = .*",
+                "Replace": "[ruleset.encounters]\n\talways-reset = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -905,11 +1134,16 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "100",
-        "ParamFieldName": "net.http.max-concurrent-connections",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "20",
         "Placeholder": "20",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.http\\]\\s*\\n\\s*max-concurrent-connections = .*",
+                "Replace": "[net.http]\n\tmax-concurrent-connections = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -920,10 +1154,15 @@
         "Keywords": "http,disk,cache,enabled",
         "FieldName": "httpdiskcacheenabled",
         "InputType": "checkbox",
-        "ParamFieldName": "net.http.disk-cache.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.http\\.disk-cache\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[net.http.disk-cache]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -939,11 +1178,16 @@
         "InputType": "number",
         "MinValue": "10",
         "MaxValue": "1024",
-        "ParamFieldName": "net.http.disk-cache.size",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "100",
         "Placeholder": "100",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.http\\.disk-cache\\]\\s*\\n\\s*size = .*",
+                "Replace": "[net.http.disk-cache]\n\tsize = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -954,10 +1198,15 @@
         "Keywords": "http,disk,cache,compression",
         "FieldName": "httpdiskcachecompression",
         "InputType": "checkbox",
-        "ParamFieldName": "net.http.disk-cache.compression.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.http\\.disk-cache\\.compression\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[net.http.disk-cache.compression]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -971,10 +1220,15 @@
         "Keywords": "require,ssl",
         "FieldName": "requiressl",
         "InputType": "checkbox",
-        "ParamFieldName": "net.http.ssl.require",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.http\\.ssl\\]\\s*\\n\\s*require = .*",
+                "Replace": "[net.http.ssl]\n\trequire = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -988,10 +1242,15 @@
         "Keywords": "ssl,ca,bundle",
         "FieldName": "sslca bundle",
         "InputType": "text",
-        "ParamFieldName": "net.http.ssl.cabundle",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.http\\.ssl\\]\\s*\\n\\s*cabundle = .*",
+                "Replace": "[net.http.ssl]\n\tcabundle = \"{{value}}\""
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1002,10 +1261,15 @@
         "Keywords": "ssl,ca,path",
         "FieldName": "sslcapath",
         "InputType": "text",
-        "ParamFieldName": "net.http.ssl.capath",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.http\\.ssl\\]\\s*\\n\\s*capath = .*",
+                "Replace": "[net.http.ssl]\n\tcapath = \"{{value}}\""
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1018,11 +1282,16 @@
         "InputType": "number",
         "MinValue": "30000",
         "MaxValue": "300000",
-        "ParamFieldName": "net.udp.window.timeout",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "60000",
         "Placeholder": "60000",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[net\\.udp\\.window\\]\\s*\\n\\s*timeout = .*",
+                "Replace": "[net.udp.window]\n\ttimeout = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1033,10 +1302,15 @@
         "Keywords": "master,server,auth,mode",
         "FieldName": "masterserverauthmode",
         "InputType": "enum",
-        "ParamFieldName": "masterserver.key-authentication.mode",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "always",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[masterserver\\.key-authentication\\]\\s*\\n\\s*mode = .*",
+                "Replace": "[masterserver.key-authentication]\n\tmode = \"{{value}}\""
+            }
+        ],
         "EnumValues": {
             "always": "Always",
             "last-known": "Last Known",
@@ -1051,10 +1325,15 @@
         "Keywords": "enforce,auth,private,networks",
         "FieldName": "enforceauthprivate",
         "InputType": "checkbox",
-        "ParamFieldName": "masterserver.key-authentication.enforce-on-private-networks",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[masterserver\\.key-authentication\\]\\s*\\n\\s*enforce-on-private-networks = .*",
+                "Replace": "[masterserver.key-authentication]\n\tenforce-on-private-networks = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1070,11 +1349,16 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "1000",
-        "ParamFieldName": "server.tweaks.2da-engine-cache-size",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "11",
         "Placeholder": "11",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*2da-engine-cache-size = .*",
+                "Replace": "[server.tweaks]\n\t2da-engine-cache-size = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1087,11 +1371,16 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "1000",
-        "ParamFieldName": "server.tweaks.2da-user-cache-size",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "10",
         "Placeholder": "10",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*2da-user-cache-size = .*",
+                "Replace": "[server.tweaks]\n\t2da-user-cache-size = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1104,11 +1393,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "500000",
-        "ParamFieldName": "server.tweaks.game-obj-update-interval",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "200000",
         "Placeholder": "200000",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*game-obj-update-interval = .*",
+                "Replace": "[server.tweaks]\n\tgame-obj-update-interval = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1121,11 +1415,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "500000",
-        "ParamFieldName": "server.tweaks.game-obj-update-interval-loading",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "20000",
         "Placeholder": "20000",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*game-obj-update-interval-loading = .*",
+                "Replace": "[server.tweaks]\n\tgame-obj-update-interval-loading = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1138,11 +1437,16 @@
         "InputType": "number",
         "MinValue": "12",
         "MaxValue": "20",
-        "ParamFieldName": "server.tweaks.game-object-cache-size",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "16",
         "Placeholder": "16",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*game-object-cache-size = .*",
+                "Replace": "[server.tweaks]\n\tgame-object-cache-size = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1155,11 +1459,16 @@
         "InputType": "number",
         "MinValue": "400",
         "MaxValue": "65535",
-        "ParamFieldName": "server.tweaks.message-limit",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "400",
         "Placeholder": "400",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*message-limit = .*",
+                "Replace": "[server.tweaks]\n\tmessage-limit = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1172,11 +1481,16 @@
         "InputType": "number",
         "MinValue": "400",
         "MaxValue": "65535",
-        "ParamFieldName": "server.tweaks.message-limit-loading",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "2000",
         "Placeholder": "2000",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*message-limit-loading = .*",
+                "Replace": "[server.tweaks]\n\tmessage-limit-loading = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1189,11 +1503,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "255",
-        "ParamFieldName": "server.tweaks.power-saving.clients-required-to-disable",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "1",
         "Placeholder": "1",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\.power-saving\\]\\s*\\n\\s*clients-required-to-disable = .*",
+                "Replace": "[server.tweaks.power-saving]\n\tclients-required-to-disable = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1206,11 +1525,16 @@
         "InputType": "number",
         "MinValue": "0.01",
         "MaxValue": "0.8",
-        "ParamFieldName": "server.tweaks.resman.max-memory-usage",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "0.125",
         "Placeholder": "0.125",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\.resman\\]\\s*\\n\\s*max-memory-usage = .*",
+                "Replace": "[server.tweaks.resman]\n\tmax-memory-usage = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1223,11 +1547,16 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "1000",
-        "ParamFieldName": "server.tweaks.threaded-timers-resolution",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "100",
         "Placeholder": "100",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*threaded-timers-resolution = .*",
+                "Replace": "[server.tweaks]\n\tthreaded-timers-resolution = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1238,10 +1567,15 @@
         "Keywords": "use,threaded,timers",
         "FieldName": "usethreadedtimers",
         "InputType": "checkbox",
-        "ParamFieldName": "server.tweaks.use-threaded-timers",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.tweaks\\]\\s*\\n\\s*use-threaded-timers = .*",
+                "Replace": "[server.tweaks]\n\tuse-threaded-timers = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1257,11 +1591,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "60000",
-        "ParamFieldName": "sqlite3.busy-timeout.milliseconds",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "3000",
         "Placeholder": "3000",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[sqlite3\\.busy-timeout\\]\\s*\\n\\s*milliseconds = .*",
+                "Replace": "[sqlite3.busy-timeout]\n\tmilliseconds = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1272,10 +1611,15 @@
         "Keywords": "sqlite,profile,trace",
         "FieldName": "sqliteprofiletrace",
         "InputType": "checkbox",
-        "ParamFieldName": "sqlite3.trace.profile.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[sqlite3\\.trace\\.profile\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[sqlite3.trace.profile]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1291,11 +1635,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "60000",
-        "ParamFieldName": "sqlite3.trace.profile.threshold-msec",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "800",
         "Placeholder": "800",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[sqlite3\\.trace\\.profile\\]\\s*\\n\\s*threshold-msec = .*",
+                "Replace": "[sqlite3.trace.profile]\n\tthreshold-msec = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1306,10 +1655,15 @@
         "Keywords": "sqlite,statement,trace",
         "FieldName": "sqlitestatementtrace",
         "InputType": "checkbox",
-        "ParamFieldName": "sqlite3.trace.stmt.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[sqlite3\\.trace\\.stmt\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[sqlite3.trace.stmt]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1325,11 +1679,16 @@
         "InputType": "number",
         "MinValue": "100",
         "MaxValue": "100000",
-        "ParamFieldName": "taskmanager.threadpool.max-mutex-wait-time",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "5000",
         "Placeholder": "5000",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[taskmanager\\.threadpool\\]\\s*\\n\\s*max-mutex-wait-time = .*",
+                "Replace": "[taskmanager.threadpool]\n\tmax-mutex-wait-time = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1342,11 +1701,16 @@
         "InputType": "number",
         "MinValue": "0",
         "MaxValue": "128",
-        "ParamFieldName": "taskmanager.threadpool.max-size",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "0",
         "Placeholder": "0",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[taskmanager\\.threadpool\\]\\s*\\n\\s*max-size = .*",
+                "Replace": "[taskmanager.threadpool]\n\tmax-size = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1357,10 +1721,15 @@
         "Keywords": "enable,tracy",
         "FieldName": "enabletracy",
         "InputType": "checkbox",
-        "ParamFieldName": "instrumentation.tracy.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[instrumentation\\.tracy\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[instrumentation.tracy]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1376,11 +1745,16 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "65535",
-        "ParamFieldName": "instrumentation.tracy.port",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "8086",
         "Placeholder": "8086",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[instrumentation\\.tracy\\]\\s*\\n\\s*port = .*",
+                "Replace": "[instrumentation.tracy]\n\tport = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1391,10 +1765,15 @@
         "Keywords": "enable,nwscript,debugger",
         "FieldName": "enablenwscriptdebugger",
         "InputType": "checkbox",
-        "ParamFieldName": "nwscript.debugger.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[nwscript\\.debugger\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[nwscript.debugger]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1406,13 +1785,18 @@
         "Subcategory": "Debug:bug_report:6",
         "Description": "Sets the debugger address",
         "Keywords": "debugger,address",
-        "FieldName": "debuggeraddress",
+               "FieldName": "debuggeraddress",
         "InputType": "text",
-        "ParamFieldName": "nwscript.debugger.address",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "127.0.0.1",
         "Placeholder": "127.0.0.1",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[nwscript\\.debugger\\]\\s*\\n\\s*address = .*",
+                "Replace": "[nwscript.debugger]\n\taddress = \"{{value}}\""
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1425,11 +1809,16 @@
         "InputType": "number",
         "MinValue": "1",
         "MaxValue": "65535",
-        "ParamFieldName": "nwscript.debugger.port",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "5122",
         "Placeholder": "5122",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[nwscript\\.debugger\\]\\s*\\n\\s*port = .*",
+                "Replace": "[nwscript.debugger]\n\tport = {{value}}"
+            }
+        ],
         "EnumValues": {}
     },
     {
@@ -1440,10 +1829,15 @@
         "Keywords": "abort,script,without,nwnx",
         "FieldName": "abortscriptwithoutnwnx",
         "InputType": "checkbox",
-        "ParamFieldName": "nwscript.nwnx.handler.abort-script-without-nwnx",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[nwscript\\.nwnx\\.handler\\]\\s*\\n\\s*abort-script-without-nwnx = .*",
+                "Replace": "[nwscript.nwnx.handler]\n\tabort-script-without-nwnx = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1457,10 +1851,15 @@
         "Keywords": "debug,assert",
         "FieldName": "debugassert",
         "InputType": "checkbox",
-        "ParamFieldName": "game.log.debug.assert",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[game\\.log\\.debug\\]\\s*\\n\\s*assert = .*",
+                "Replace": "[game.log.debug]\n\tassert = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1474,10 +1873,15 @@
         "Keywords": "debug,network",
         "FieldName": "debugnetwork",
         "InputType": "checkbox",
-        "ParamFieldName": "game.log.debug.network",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[game\\.log\\.debug\\]\\s*\\n\\s*network = .*",
+                "Replace": "[game.log.debug]\n\tnetwork = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1491,10 +1895,15 @@
         "Keywords": "debug,nui",
         "FieldName": "debugnui",
         "InputType": "checkbox",
-        "ParamFieldName": "game.log.debug.nui",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[game\\.log\\.debug\\]\\s*\\n\\s*nui = .*",
+                "Replace": "[game.log.debug]\n\tnui = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1508,10 +1917,15 @@
         "Keywords": "debug,scriptvm",
         "FieldName": "debugscriptvm",
         "InputType": "checkbox",
-        "ParamFieldName": "game.log.debug.scriptvm",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[game\\.log\\.debug\\]\\s*\\n\\s*scriptvm = .*",
+                "Replace": "[game.log.debug]\n\tscriptvm = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1525,10 +1939,15 @@
         "Keywords": "log,creature,deaths",
         "FieldName": "logcreaturedeaths",
         "InputType": "checkbox",
-        "ParamFieldName": "server.log.creature-deaths.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "false",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.log\\.creature-deaths\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[server.log.creature-deaths]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1542,10 +1961,15 @@
         "Keywords": "debug,mode,sends,players",
         "FieldName": "debugmodesendstoplayers",
         "InputType": "checkbox",
-        "ParamFieldName": "server.log.debug-mode-sends-to-players.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.log\\.debug-mode-sends-to-players\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[server.log.debug-mode-sends-to-players]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
@@ -1559,10 +1983,15 @@
         "Keywords": "log,rotation",
         "FieldName": "logrotation",
         "InputType": "checkbox",
-        "ParamFieldName": "server.log.rotation.enabled",
         "ConfigFile": "user/settings.tml",
         "IncludeInCommandLine": false,
         "DefaultValue": "true",
+        "ConfigFileExpressions": [
+            {
+                "Find": "\\[server\\.log\\.rotation\\]\\s*\\n\\s*enabled = .*",
+                "Replace": "[server.log.rotation]\n\tenabled = {{value}}"
+            }
+        ],
         "EnumValues": {
             "False": "false",
             "True": "true"
