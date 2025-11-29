@@ -1,59 +1,59 @@
 [
-  {
-    "DisplayName": "Server Name",
-    "Category": "Heat:stadia_controller",
-    "Subcategory": "Server:dns:1",
-    "Description": "The name of the server",
-    "Keywords": "name",
-    "FieldName": "ServerName",
-    "InputType": "text",
-    "DefaultValue": "Heat Server",
-    "EnumValues": {}
-  },
-  {
-    "DisplayName": "Server Password",
-    "Category": "Heat:stadia_controller",
-    "Subcategory": "Server:dns:1",
-    "Description": "Password to join the server",
-    "Keywords": "password",
-    "FieldName": "ServerPassword",
-    "InputType": "text",
-    "DefaultValue": "",
-    "EnumValues": {}
-  },
-  {
-    "DisplayName": "Max Players",
-    "Category": "Heat:stadia_controller",
-    "Subcategory": "Server:dns:1",
-    "Description": "Maximum number of players",
-    "Keywords": "players,max",
-    "FieldName": "$MaxUsers",
-    "InputType": "number",
-    "DefaultValue": 30,
-    "EnumValues": {}
-  },
-  {
-    "DisplayName": "Game Port",
-    "Category": "Heat:stadia_controller",
-    "Subcategory": "Server:dns:1",
-    "Description": "Port for game connections",
-    "Keywords": "port",
-    "FieldName": "$GamePort",
-    "InputType": "number",
-    "Hidden": true,
-    "DefaultValue": 7777,
-    "EnumValues": {}
-  },
-  {
-    "DisplayName": "Query Port",
-    "Category": "Heat:stadia_controller",
-    "Subcategory": "Server:dns:1",
-    "Description": "Port for server queries",
-    "Keywords": "port,query",
-    "FieldName": "$QueryPort",
-    "InputType": "number",
-    "Hidden": true,
-    "DefaultValue": 27015,
-    "EnumValues": {}
-  }
+	{
+		"DisplayName": "Server Name",
+		"Category": "Heat:stadia_controller",
+		"Subcategory": "Server:dns:1",
+		"Description": "The name of the server",
+		"Keywords": "name",
+		"FieldName": "ServerName",
+		"InputType": "text",
+		"DefaultValue": "Heat Server",
+		"EnumValues": {}
+	},
+	{
+		"DisplayName": "Server Password",
+		"Category": "Heat:stadia_controller",
+		"Subcategory": "Server:dns:1",
+		"Description": "Password to join the server",
+		"Keywords": "password",
+		"FieldName": "ServerPassword",
+		"InputType": "text",
+		"DefaultValue": "",
+		"EnumValues": {}
+	},
+	{
+		"DisplayName": "Max Players",
+		"Category": "Heat:stadia_controller",
+		"Subcategory": "Server:dns:1",
+		"Description": "Maximum number of players",
+		"Keywords": "players,max",
+		"FieldName": "$MaxUsers",
+		"InputType": "number",
+		"DefaultValue": 30,
+		"EnumValues": {}
+	},
+	{
+		"DisplayName": "Game Port",
+		"Category": "Heat:stadia_controller",
+		"Subcategory": "Server:dns:1",
+		"Description": "Port for game connections",
+		"Keywords": "port",
+		"FieldName": "$GamePort",
+		"InputType": "number",
+		"Hidden": true,
+		"DefaultValue": 7777,
+		"EnumValues": {}
+	},
+	{
+		"DisplayName": "Query Port",
+		"Category": "Heat:stadia_controller",
+		"Subcategory": "Server:dns:1",
+		"Description": "Port for server queries",
+		"Keywords": "port,query",
+		"FieldName": "$QueryPort",
+		"InputType": "number",
+		"Hidden": true,
+		"DefaultValue": 27015,
+		"EnumValues": {}
+	}
 ]

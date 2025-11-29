@@ -1,14 +1,14 @@
 [
-  {
-    "Name": "GamePort",
-    "Protocol": "UDP",
-    "Port": 7777,
-    "Ref": "GamePort"
-  },
-  {
-    "Name": "QueryPort",
-    "Protocol": "UDP",
-    "Port": 27015,
-    "Ref": "QueryPort"
-  }
+	{
+		"Name": "GamePort",
+		"Protocol": "UDP",
+		"Port": 7777,
+		"Ref": "GamePort"
+	},
+	{
+		"Name": "QueryPort",
+		"Protocol": "UDP",
+		"Port": 27015,
+		"Ref": "QueryPort"
+	}
 ]

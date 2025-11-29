@@ -1,13 +1,13 @@
 [
-  {
-    "DisplayName": "Custom Arguments",
-    "Category": "Heat:stadia_controller",
-    "Subcategory": "Server:dns:1",
-    "Description": "Additional command line arguments",
-    "Keywords": "args,custom",
-    "FieldName": "CustomArgs",
-    "InputType": "text",
-    "DefaultValue": "",
-    "EnumValues": {}
-  }
+	{
+		"DisplayName": "Custom Arguments",
+		"Category": "Heat:stadia_controller",
+		"Subcategory": "Server:dns:1",
+		"Description": "Additional command line arguments",
+		"Keywords": "args,custom",
+		"FieldName": "CustomArgs",
+		"InputType": "text",
+		"DefaultValue": "",
+		"EnumValues": {}
+	}
 ]
