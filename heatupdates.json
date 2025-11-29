@@ -47,19 +47,18 @@
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "Generate Config (Windows)",
-    "UpdateSourcePlatform": "Windows",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "cmd.exe",
-    "UpdateSourceArgs": "/C \"cd heat\\996600 && Server.exe\"",
-    "SkipOnFailure": true
+    "UpdateStageName": "Generate Config: Start Application",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "StartApplication"
   },
   {
-    "UpdateStageName": "Generate Config (Linux)",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"cd \\\"{{$FullBaseDir}}\\\" && STEAM_COMPAT_DATA_PATH=\\\"{{$FullRootDir}}.proton/compatdata\\\" STEAM_COMPAT_CLIENT_INSTALL_PATH=\\\"{{$FullBaseDir}}.steam/steam\\\" HOME=\\\"{{$FullBaseDir}}\\\" XDG_RUNTIME_DIR=/tmp \\\"{{$FullRootDir}}.proton/proton\\\" runinprefix Server.exe\"",
-    "SkipOnFailure": true
+    "UpdateStageName": "Generate Config: Wait for Startup Complete",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "WaitForStartupComplete"
+  },
+  {
+    "UpdateStageName": "Generate Config: Shutdown Application",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "ShutdownApplication"
   }
 ]
