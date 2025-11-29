@@ -4,7 +4,7 @@
     "UpdateSourcePlatform": "All",
     "UpdateSource": "SteamCMD",
     "UpdateSourceData": "996600",
-    "UpdateSourceArgs": "",
+    "UpdateSourceArgs": "656240",
     "ForceDownloadPlatform": "Windows",
     "UpdateSourceVersion": "",
     "UpdateSourceTarget": "{{$FullBaseDir}}",
@@ -13,6 +13,22 @@
     "DeleteAfterExtract": false,
     "UpdateSourceConditionSetting": "",
     "UpdateSourceConditionValue": "",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Set Steam App ID",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "cmd.exe",
+    "UpdateSourceArgs": "/C echo 656240 > steam_appid.txt",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Set Steam App ID",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"echo 656240 > steam_appid.txt\"",
     "SkipOnFailure": false
   },
   {
