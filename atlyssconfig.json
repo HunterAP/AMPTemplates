@@ -54,7 +54,7 @@
     "Category": "Atlyss:stadia_controller",
     "Subcategory": "General:dns:1",
     "ParamFieldName": "",
-    "IncludeInCommandLine": true,
+    "IncludeInCommandLine": false,
     "DefaultValue": "-public",
     "EnumValues": {
       "Public": "-public",
@@ -70,7 +70,7 @@
     "Category": "Atlyss:stadia_controller",
     "Subcategory": "General:dns:1",
     "ParamFieldName": "",
-    "IncludeInCommandLine": true,
+    "IncludeInCommandLine": false,
     "DefaultValue": "-pve",
     "EnumValues": {
       "PvE": "-pve",
@@ -99,6 +99,6 @@
     "InputType": "checkbox",
     "Category": "Atlyss:stadia_controller",
     "Subcategory": "Updates:build:-1",
-    "DefaultValue": "false"
+    "DefaultValue": false
   }
 ]

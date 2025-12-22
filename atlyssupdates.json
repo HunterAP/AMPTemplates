@@ -15,7 +15,8 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"BepInExVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack | jq -r \\\".latest_version\\\"); wget -qO BepInEx.zip https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip && echo \\\"BepInEx v$BepInExVersion downloaded\\\"\"",
+    "UpdateSourceArgs": "-c \"BepInExVersion=\\\"{{bepinex_version}}\\\"; if [[ -z \\\"$BepInExVersion\\\" ]]; then BepInExVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack | jq -r '\\\".latest_version\\\"'); fi; if [[ ! \\\"$BepInExVersion\\\" =~ ^[0-9]+\\.[0-9]+\\.[0-9]+$ ]]; then echo \\\"Invalid BepInEx version format specified\\\" && exit 1; fi; wget -qO BepInEx.zip https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip && echo \\\"BepInEx v$BepInExVersion downloaded\\\"\"",
+    "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -24,7 +25,8 @@
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
-    "UpdateSourceArgs": "-NoProfile -Command \"$BepInExVersion = (Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack').latest_version; Invoke-WebRequest -Uri \\\"https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip\\\" -OutFile 'BepInEx.zip'; Write-Output 'BepInEx downloaded'\"",
+    "UpdateSourceArgs": "-NoProfile -Command \"$BepInExVersion = '{{bepinex_version}}'; if ([string]::IsNullOrWhiteSpace($BepInExVersion)) { $BepInExVersion=(Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack').latest_version }; if ($BepInExVersion -notmatch '^\\d+\\.\\d+\\.\\d+$') { Write-Output 'Invalid BepInEx version format specified'; exit 1 }; Invoke-WebRequest -Uri \"https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip\" -OutFile 'BepInEx.zip'; Write-Output 'BepInEx downloaded'\"",
+    "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -35,6 +37,7 @@
     "UpdateSourceData": "BepInEx.zip",
     "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
+    "SetExecutableFlag": true,
     "DeleteAfterExtract": true,
     "SkipOnFailure": false
   },
@@ -75,7 +78,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir }}Temp' || true\"",
+    "UpdateSourceArgs": "-c \"rm -rf '{{$FullBaseDir}}Temp' || true\"",
     "SkipOnFailure": true
   },
   {
@@ -91,7 +94,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"AtlyssDSVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer | jq -r \\\".latest_version\\\"); wget -qO AtlyssDedicatedServer.zip https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip && echo 'AtlyssDedicatedServer downloaded'\"",
+    "UpdateSourceArgs": "-c \"AtlyssDSVersion=\\\"{{atlyssds_version}}\\\"; if [[ -z \\\"$AtlyssDSVersion\\\" ]]; then AtlyssDSVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer | jq -r '\\\".latest_version\\\"'); fi; if [[ ! \\\"$AtlyssDSVersion\\\" =~ ^[0-9]+\\.[0-9]+\\.[0-9]+$ ]]; then echo \\\"Invalid AtlyssDedicatedServer version format specified\\\" && exit 1; fi; wget -qO AtlyssDedicatedServer.zip https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip && echo 'AtlyssDedicatedServer downloaded'\"",
     "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
@@ -113,6 +116,7 @@
     "UpdateSourceData": "AtlyssDedicatedServer.zip",
     "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
+    "SetExecutableFlag": true,
     "DeleteAfterExtract": true,
     "SkipOnFailure": false
   },
@@ -153,7 +157,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir}}Temp' || true\"",
+    "UpdateSourceArgs": "-c \"rm -rf '{{$FullBaseDir}}Temp' || true\"",
     "SkipOnFailure": true
   },
   {
