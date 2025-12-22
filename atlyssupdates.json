@@ -43,7 +43,7 @@
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
-    "UpdateSourceArgs": "-NoProfile -Command \"$dir='{{$FullBaseDir}}Temp'; $src = Get-ChildItem -Path $dir -Directory -Filter 'BepInExPack*' | Select-Object -First 1; if ($null -ne $src) { $dest=Join-Path $dir 'BepInEx'; New-Item -ItemType Directory -Path $dest -Force | Out-Null; Get-ChildItem $src.FullName -Recurse -Force | Move-Item -Destination $dest -Force; Remove-Item $src.FullName -Recurse -Force; Write-Output 'BepInEx normalized' } else { Write-Error 'No BepInExPack folder found'; exit 1 }\"",
+    "UpdateSourceArgs": "-NoProfile -Command \"$dir='{{$FullBaseDir}}Temp'; $src = Get-ChildItem -Path $dir -Directory -Filter 'BepInEx*' | Select-Object -First 1; if ($null -ne $src) { $dest=Join-Path $dir 'BepInEx'; New-Item -ItemType Directory -Path $dest -Force | Out-Null; Get-ChildItem $src.FullName -Recurse -Force | Move-Item -Destination $dest -Force; Remove-Item $src.FullName -Recurse -Force; Write-Output 'BepInEx normalized' } else { Write-Error 'No BepInEx folder found'; exit 1 }\"",
     "SkipOnFailure": false
   },
   {
@@ -51,7 +51,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"shopt -s nullglob dotglob; DIR='{{$FullBaseDir}}Temp'; for d in \"$DIR\"/BepInExPack*; do if [ -d \"$d\" ]; then mkdir -p \"$DIR/BepInEx\"; cp -a \"$d\"/. \"$DIR/BepInEx\"/; rm -rf \"$d\"; fi; done; echo 'BepInEx normalized'\"",
+    "UpdateSourceArgs": "-c \"shopt -s nullglob dotglob; DIR='{{$FullBaseDir}}Temp'; for d in \"$DIR\"/BepInEx*; do if [ -d \"$d\" ]; then mkdir -p \"$DIR/BepInEx\"; cp -a \"$d\"/. \"$DIR/BepInEx\"/; rm -rf \"$d\"; fi; done; echo 'BepInEx normalized'\"",
     "SkipOnFailure": false
   },
   {
@@ -71,19 +71,19 @@
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "Cleanup Atlyss Temp",
+    "UpdateStageName": "Cleanup Temp",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir }}2768430/AtlyssDedicatedServer_extracted' || true\"",
+    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir }}Temp' || true\"",
     "SkipOnFailure": true
   },
   {
-    "UpdateStageName": "Cleanup Atlyss Temp",
+    "UpdateStageName": "Cleanup Temp",
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
-    "UpdateSourceArgs": "-NoProfile -Command \"$d='{{$FullBaseDir}}2768430\\AtlyssDedicatedServer_extracted'; if (Test-Path $d) { Remove-Item -Path $d -Recurse -Force; Write-Output 'temp removed' } else { Write-Output 'temp not found' }\"",
+    "UpdateSourceArgs": "-NoProfile -Command \"$d='{{$FullBaseDir}}Temp'; if (Test-Path $d) { Remove-Item -Path $d -Recurse -Force; Write-Output 'temp removed' } else { Write-Output 'temp not found' }\"",
     "SkipOnFailure": true  
   },
   {
@@ -92,7 +92,7 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
     "UpdateSourceArgs": "-c \"AtlyssDSVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer | jq -r \\\".latest_version\\\"); wget -qO AtlyssDedicatedServer.zip https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip && echo 'AtlyssDedicatedServer downloaded'\"",
-    "UpdateSourceTarget": "{{$FullBaseDir}}2768430",
+    "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -102,7 +102,7 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
     "UpdateSourceArgs": "-NoProfile -Command \"$AtlyssDSVersion = (Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer').latest_version; Invoke-WebRequest -Uri \\\"https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip\\\" -OutFile 'AtlyssDedicatedServer.zip'; Write-Output 'AtlyssDedicatedServer downloaded'\"",
-    "UpdateSourceTarget": "{{$FullBaseDir}}2768430",
+    "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -153,7 +153,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir }}2768430/AtlyssDedicatedServer_extracted' || true\"",
+    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir}}Temp' || true\"",
     "SkipOnFailure": true
   },
   {
@@ -161,7 +161,7 @@
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
-    "UpdateSourceArgs": "-NoProfile -Command \"$d='{{$FullBaseDir}}2768430\\AtlyssDedicatedServer_extracted'; if (Test-Path $d) { Remove-Item -Path $d -Recurse -Force; Write-Output 'temp removed' } else { Write-Output 'temp not found' }\"",
+    "UpdateSourceArgs": "-NoProfile -Command \"$d='{{$FullBaseDir}}Temp'; if (Test-Path $d) { Remove-Item -Path $d -Recurse -Force; Write-Output 'temp removed' } else { Write-Output 'temp not found' }\"",
     "SkipOnFailure": true  
   }
 ]
