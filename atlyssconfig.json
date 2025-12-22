@@ -1,0 +1,113 @@
+[
+  {
+    "DisplayName": "Server Name",
+    "Description": "Server name as it appears in the server list",
+    "FieldName": "ServerName",
+    "InputType": "text",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "General:dns:1",
+    "ParamFieldName": "name",
+    "IncludeInCommandLine": false,
+    "Required": true,
+    "DefaultValue": "My Atlyss Server"
+  },
+  {
+    "DisplayName": "Server Password",
+    "Description": "Password required to join the server",
+    "FieldName": "ServerPassword",
+    "InputType": "text",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "General:dns:1",
+    "ParamFieldName": "password",
+    "IncludeInCommandLine": false,
+    "DefaultValue": ""
+  },
+  {
+    "DisplayName": "Message of the Day",
+    "Description": "Message displayed to players when joining",
+    "FieldName": "MOTD",
+    "InputType": "text",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "General:dns:1",
+    "ParamFieldName": "motd",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "Welcome to Atlyss Server!"
+  },
+  {
+    "DisplayName": "Max Players",
+    "Description": "Maximum number of players (2-250)",
+    "FieldName": "MaxPlayers",
+    "InputType": "number",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "General:dns:1",
+    "ParamFieldName": "maxplayers",
+    "IncludeInCommandLine": false,
+    "MinValue": 2,
+    "MaxValue": 250,
+    "DefaultValue": 16
+  },
+  {
+    "DisplayName": "Server Visibility",
+    "Description": "Server visibility setting (only one allowed)",
+    "FieldName": "Visibility",
+    "InputType": "enum",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "General:dns:1",
+    "ParamFieldName": "",
+    "IncludeInCommandLine": true,
+    "DefaultValue": "-public",
+    "EnumValues": {
+      "Public": "-public",
+      "Private": "-private",
+      "Friends Only": "-friends"
+    }
+  },
+  {
+    "DisplayName": "Lobby Focus",
+    "Description": "Lobby focus setting (only one allowed)",
+    "FieldName": "Focus",
+    "InputType": "enum",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "General:dns:1",
+    "ParamFieldName": "",
+    "IncludeInCommandLine": true,
+    "DefaultValue": "-pve",
+    "EnumValues": {
+      "PvE": "-pve",
+      "PvP": "-pvp",
+      "Social": "-social",
+      "Roleplay": "-rp"
+    }
+  },
+  {
+    "DisplayName": "Host Save Slot",
+    "Description": "Save slot for the host character (0-104, must have a character)",
+    "FieldName": "HostSave",
+    "InputType": "number",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "General:dns:1",
+    "ParamFieldName": "hostsave",
+    "IncludeInCommandLine": false,
+    "MinValue": 0,
+    "MaxValue": 104,
+    "DefaultValue": 0
+  },
+  {
+    "DisplayName": "Install BepInEx",
+    "Description": "Install BepInEx mod loader",
+    "FieldName": "install_bepinex",
+    "InputType": "checkbox",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "Mods:build:2",
+    "DefaultValue": "true"
+  },
+  {
+    "DisplayName": "Install Atlyss Dedicated Server",
+    "Description": "Install AtlyssDedicatedServer plugin",
+    "FieldName": "install_atlyss_dedicated",
+    "InputType": "checkbox",
+    "Category": "Atlyss:stadia_controller",
+    "Subcategory": "Mods:build:2",
+    "DefaultValue": "true"
+  }
+]

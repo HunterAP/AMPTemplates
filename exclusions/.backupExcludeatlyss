@@ -1,0 +1,8 @@
+BepInEx/LogOutput.log
+BepInEx/config
+BepInEx/plugins/AtlyssDedicatedServer/config
+Saves/
+ATLYSS_Data/
+*.log
+temp/
+cache/

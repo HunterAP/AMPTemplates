@@ -1,0 +1,33 @@
+[
+  {
+    "UpdateStageName": "SteamCMD Download",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "SteamCMD",
+    "UpdateSourceData": "2768430",
+    "UpdateSourceArgs": "2768430",
+    "UpdateSourceVersion": "{{Stream}}",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "BepInEx Download",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"BepInExVersion=\\\"{{bepinex_version}}\\\" && if [[ -z \\\"$BepInExVersion\\\" ]]; then BepInExVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/denikson/BepInExPack_Valheim | jq -r \\\".latest_version\\\"); fi && wget -qO BepInEx.zip https://gcdn.thunderstore.io/live/repository/packages/denikson-BepInExPack_Valheim-$BepInExVersion.zip && echo \\\"BepInEx v$BepInExVersion downloaded\\\"\"",
+    "UpdateSourceConditionSetting": "install_bepinex",
+    "UpdateSourceConditionValue": "true",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "AtlyssDedicatedServer Download",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "GithubRelease",
+    "UpdateSourceArgs": "Flee-Time/AtlyssDedicatedServer",
+    "UpdateSourceData": "Flees_AtlyssDedicatedServerV0.0.6.zip",
+    "UpdateSourceConditionSetting": "install_atlyss_dedicated",
+    "UpdateSourceConditionValue": "true",
+    "UnzipUpdateSource": true,
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  }
+]
