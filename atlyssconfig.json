@@ -93,21 +93,12 @@
     "DefaultValue": 0
   },
   {
-    "DisplayName": "Install BepInEx",
-    "Description": "Install BepInEx mod loader",
-    "FieldName": "install_bepinex",
+    "DisplayName": "Disable Base Game Download",
+    "Description": "If set, AMP will not download the Atlyss game files from Steam. The game must be installed manually.",
+    "FieldName": "DisableGameDownload",
     "InputType": "checkbox",
     "Category": "Atlyss:stadia_controller",
-    "Subcategory": "Mods:build:2",
-    "DefaultValue": "true"
-  },
-  {
-    "DisplayName": "Install Atlyss Dedicated Server",
-    "Description": "Install AtlyssDedicatedServer plugin",
-    "FieldName": "install_atlyss_dedicated",
-    "InputType": "checkbox",
-    "Category": "Atlyss:stadia_controller",
-    "Subcategory": "Mods:build:2",
-    "DefaultValue": "true"
+    "Subcategory": "Updates:build:-1",
+    "DefaultValue": "false"
   }
 ]
