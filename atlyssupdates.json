@@ -21,9 +21,9 @@
   {
     "UpdateStageName": "AtlyssDedicatedServer Download",
     "UpdateSourcePlatform": "All",
-    "UpdateSource": "GithubRelease",
-    "UpdateSourceArgs": "Flee-Time/AtlyssDedicatedServer",
-    "UpdateSourceData": "Flees_AtlyssDedicatedServerV0.0.6.zip",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"wget -qO- https://api.github.com/repos/Flee-Time/AtlyssDedicatedServer/releases/latest | jq -r '.assets[0].browser_download_url' | xargs wget -qO AtlyssDedicatedServer.zip && echo 'AtlyssDedicatedServer downloaded'\"",
     "UpdateSourceConditionSetting": "install_atlyss_dedicated",
     "UpdateSourceConditionValue": "true",
     "UnzipUpdateSource": true,
