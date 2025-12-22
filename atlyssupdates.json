@@ -5,6 +5,7 @@
     "UpdateSource": "SteamCMD",
     "UpdateSourceData": "2768430",
     "UpdateSourceArgs": "2768430",
+    "ForceDownloadPlatform": "Windows",
     "UpdateSourceConditionSetting": "DisableGameDownload",
     "UpdateSourceConditionValue": "false",
     "SkipOnFailure": false
@@ -15,14 +16,37 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
     "UpdateSourceArgs": "-c \"BepInExVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack | jq -r \\\".latest_version\\\"); wget -qO BepInEx.zip https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip && echo \\\"BepInEx v$BepInExVersion downloaded\\\"\"",
+    "UnzipUpdateSource": true,
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "BepInEx Download",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \"$BepInExVersion = (Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack').latest_version; Invoke-WebRequest -Uri \\\"https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip\\\" -OutFile 'BepInEx.zip'; Write-Output 'BepInEx downloaded'\"",
+    "UnzipUpdateSource": true,
+    "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
   {
     "UpdateStageName": "AtlyssDedicatedServer Download",
-    "UpdateSourcePlatform": "All",
+    "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
     "UpdateSourceArgs": "-c \"AtlyssDSVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer | jq -r \\\".latest_version\\\"); wget -qO AtlyssDedicatedServer.zip https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip && echo 'AtlyssDedicatedServer downloaded'\"",
+    "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins",
+    "UnzipUpdateSource": true,
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "AtlyssDedicatedServer Download",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \"$AtlyssDSVersion = (Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer').latest_version; Invoke-WebRequest -Uri \\\"https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip\\\" -OutFile 'AtlyssDedicatedServer.zip'; Write-Output 'AtlyssDedicatedServer downloaded'\"",
     "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins/AtlyssModding-AtlyssDedicatedServer",
     "UnzipUpdateSource": true,
     "OverwriteExistingFiles": true,
