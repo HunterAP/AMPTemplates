@@ -16,7 +16,6 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
     "UpdateSourceArgs": "-c \"BepInExVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack | jq -r \\\".latest_version\\\"); wget -qO BepInEx.zip https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip && echo \\\"BepInEx v$BepInExVersion downloaded\\\"\"",
-    "UnzipUpdateSource": true,
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -26,8 +25,33 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
     "UpdateSourceArgs": "-NoProfile -Command \"$BepInExVersion = (Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack').latest_version; Invoke-WebRequest -Uri \\\"https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip\\\" -OutFile 'BepInEx.zip'; Write-Output 'BepInEx downloaded'\"",
-    "UnzipUpdateSource": true,
     "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "BepInEx Extract",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "ExtractArchive",
+    "UpdateSourceData": "BepInEx.zip",
+    "UpdateSourceTarget": "{{$FullBaseDir}}",
+    "OverwriteExistingFiles": true,
+    "DeleteAfterExtract": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Verify BepInEx",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"if [ -d '{{$FullBaseDir}}BepInEx/core' ]; then echo 'BepInEx present'; else echo 'BepInEx missing' >&2; exit 1; fi\"",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Verify BepInEx",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \"if (Test-Path -Path '{{$FullBaseDir}}BepInEx\\core') { Write-Output 'BepInEx present' } else { Write-Error 'BepInEx missing'; exit 1 }\"",
     "SkipOnFailure": false
   },
   {
@@ -37,7 +61,6 @@
     "UpdateSourceData": "/bin/bash",
     "UpdateSourceArgs": "-c \"AtlyssDSVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer | jq -r \\\".latest_version\\\"); wget -qO AtlyssDedicatedServer.zip https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip && echo 'AtlyssDedicatedServer downloaded'\"",
     "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins",
-    "UnzipUpdateSource": true,
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -48,8 +71,49 @@
     "UpdateSourceData": "powershell.exe",
     "UpdateSourceArgs": "-NoProfile -Command \"$AtlyssDSVersion = (Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer').latest_version; Invoke-WebRequest -Uri \\\"https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip\\\" -OutFile 'AtlyssDedicatedServer.zip'; Write-Output 'AtlyssDedicatedServer downloaded'\"",
     "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins/AtlyssModding-AtlyssDedicatedServer",
-    "UnzipUpdateSource": true,
     "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "AtlyssDedicatedServer Extract",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "ExtractArchive",
+    "UpdateSourceData": "AtlyssDedicatedServer.zip",
+    "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins",
+    "OverwriteExistingFiles": true,
+    "DeleteAfterExtract": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "AtlyssDedicatedServer Flatten",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"set -e; DIR='{{$FullBaseDir}}BepInEx/plugins'; if [ -d \\\"$DIR\\\" ]; then shopt -s dotglob; for d in \\\"$DIR\\\"/*/; do if [ -d \\\"$d\\\" ]; then mv \\\"$d\\\"* \\\"$DIR\\\"/ || true; rm -rf \\\"$d\\\"; fi; done; fi; echo 'Atlyss plugins normalized'\"",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "AtlyssDedicatedServer Flatten",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \" $dir='{{$FullBaseDir}}BepInEx\\plugins'; if (Test-Path $dir) { Get-ChildItem -Directory $dir | ForEach-Object { $src = $_.FullName; Get-ChildItem $src -Recurse -File | Move-Item -Destination $dir -Force; Remove-Item $src -Recurse -Force } }; Write-Output 'Atlyss plugins normalized'\"",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Verify Atlyss Plugin",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"if ls '{{$FullBaseDir}}BepInEx/plugins'/*.dll >/dev/null 2>&1; then echo 'Plugin DLL found'; else echo 'Plugin missing' >&2; exit 1; fi\"",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Verify Atlyss Plugin",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \" if (Get-ChildItem -Path '{{$FullBaseDir}}BepInEx\\plugins' -Filter '*.dll' -Recurse -ErrorAction SilentlyContinue) { Write-Output 'Plugin DLL found' } else { Write-Error 'Plugin missing' ; exit 1 }\"",
     "SkipOnFailure": false
   }
 ]
