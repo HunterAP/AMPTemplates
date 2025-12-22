@@ -5,7 +5,6 @@
     "UpdateSource": "SteamCMD",
     "UpdateSourceData": "2768430",
     "UpdateSourceArgs": "2768430",
-    "UpdateSourceVersion": "{{Stream}}",
     "UpdateSourceConditionSetting": "DisableGameDownload",
     "UpdateSourceConditionValue": "false",
     "SkipOnFailure": false
@@ -15,7 +14,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"BepInExVersion=\\\"{{bepinex_version}}\\\" && if [[ -z \\\"$BepInExVersion\\\" ]]; then BepInExVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/denikson/BepInExPack_Valheim | jq -r \\\".latest_version\\\"); fi && wget -qO BepInEx.zip https://gcdn.thunderstore.io/live/repository/packages/denikson-BepInExPack_Valheim-$BepInExVersion.zip && echo \\\"BepInEx v$BepInExVersion downloaded\\\"\"",
+    "UpdateSourceArgs": "-c \"BepInExVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/BepInEx/BepInExPack | jq -r \\\".latest_version\\\"); wget -qO BepInEx.zip https://gcdn.thunderstore.io/live/repository/packages/BepInEx-BepInExPack-$BepInExVersion.zip && echo \\\"BepInEx v$BepInExVersion downloaded\\\"\"",
     "SkipOnFailure": false
   },
   {
@@ -23,7 +22,8 @@
     "UpdateSourcePlatform": "All",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"wget -qO- https://api.github.com/repos/Flee-Time/AtlyssDedicatedServer/releases/latest | jq -r '.assets[0].browser_download_url' | xargs wget -qO AtlyssDedicatedServer.zip && echo 'AtlyssDedicatedServer downloaded'\"",
+    "UpdateSourceArgs": "-c \"AtlyssDSVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer | jq -r \\\".latest_version\\\"); wget -qO AtlyssDedicatedServer.zip https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip && echo 'AtlyssDedicatedServer downloaded'\"",
+    "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins/AtlyssModding-AtlyssDedicatedServer",
     "UnzipUpdateSource": true,
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
