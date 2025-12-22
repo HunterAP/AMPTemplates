@@ -33,9 +33,25 @@
     "UpdateSourcePlatform": "All",
     "UpdateSource": "ExtractArchive",
     "UpdateSourceData": "BepInEx.zip",
-    "UpdateSourceTarget": "{{$FullBaseDir}}",
+    "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
     "DeleteAfterExtract": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "BepInEx Copy",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \"$dir='{{$FullBaseDir}}Temp'; $src = Get-ChildItem -Path $dir -Directory -Filter 'BepInExPack*' | Select-Object -First 1; if ($null -ne $src) { $dest=Join-Path $dir 'BepInEx'; New-Item -ItemType Directory -Path $dest -Force | Out-Null; Get-ChildItem $src.FullName -Recurse -Force | Move-Item -Destination $dest -Force; Remove-Item $src.FullName -Recurse -Force; Write-Output 'BepInEx normalized' } else { Write-Error 'No BepInExPack folder found'; exit 1 }\"",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "BepInEx Copy",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"shopt -s nullglob dotglob; DIR='{{$FullBaseDir}}Temp'; for d in \"$DIR\"/BepInExPack*; do if [ -d \"$d\" ]; then mkdir -p \"$DIR/BepInEx\"; cp -a \"$d\"/. \"$DIR/BepInEx\"/; rm -rf \"$d\"; fi; done; echo 'BepInEx normalized'\"",
     "SkipOnFailure": false
   },
   {
@@ -43,7 +59,7 @@
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"if [ -d '{{$FullBaseDir}}BepInEx/core' ]; then echo 'BepInEx present'; else echo 'BepInEx missing' >&2; exit 1; fi\"",
+    "UpdateSourceArgs": "-c \"if [ -d '{{$FullBaseDir}}2768430/BepInEx/core' ]; then echo 'BepInEx present'; else echo 'BepInEx missing' >&2; exit 1; fi\"",
     "SkipOnFailure": false
   },
   {
@@ -51,8 +67,24 @@
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
-    "UpdateSourceArgs": "-NoProfile -Command \"if (Test-Path -Path '{{$FullBaseDir}}BepInEx\\core') { Write-Output 'BepInEx present' } else { Write-Error 'BepInEx missing'; exit 1 }\"",
+    "UpdateSourceArgs": "-NoProfile -Command \"if (Test-Path -Path '{{$FullBaseDir}}2768430\\BepInEx\\core') { Write-Output 'BepInEx present' } else { Write-Error 'BepInEx missing'; exit 1 }\"",
     "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Cleanup Atlyss Temp",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir }}2768430/AtlyssDedicatedServer_extracted' || true\"",
+    "SkipOnFailure": true
+  },
+  {
+    "UpdateStageName": "Cleanup Atlyss Temp",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \"$d='{{$FullBaseDir}}2768430\\AtlyssDedicatedServer_extracted'; if (Test-Path $d) { Remove-Item -Path $d -Recurse -Force; Write-Output 'temp removed' } else { Write-Output 'temp not found' }\"",
+    "SkipOnFailure": true  
   },
   {
     "UpdateStageName": "AtlyssDedicatedServer Download",
@@ -60,7 +92,7 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
     "UpdateSourceArgs": "-c \"AtlyssDSVersion=$(wget -qO- https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer | jq -r \\\".latest_version\\\"); wget -qO AtlyssDedicatedServer.zip https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip && echo 'AtlyssDedicatedServer downloaded'\"",
-    "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins",
+    "UpdateSourceTarget": "{{$FullBaseDir}}2768430",
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -70,7 +102,7 @@
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
     "UpdateSourceArgs": "-NoProfile -Command \"$AtlyssDSVersion = (Invoke-RestMethod 'https://thunderstore.io/api/v1/package-metrics/AtlyssModding/AtlyssDedicatedServer').latest_version; Invoke-WebRequest -Uri \\\"https://gcdn.thunderstore.io/live/repository/packages/AtlyssModding-AtlyssDedicatedServer-$AtlyssDSVersion.zip\\\" -OutFile 'AtlyssDedicatedServer.zip'; Write-Output 'AtlyssDedicatedServer downloaded'\"",
-    "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins/AtlyssModding-AtlyssDedicatedServer",
+    "UpdateSourceTarget": "{{$FullBaseDir}}2768430",
     "OverwriteExistingFiles": true,
     "SkipOnFailure": false
   },
@@ -79,41 +111,57 @@
     "UpdateSourcePlatform": "All",
     "UpdateSource": "ExtractArchive",
     "UpdateSourceData": "AtlyssDedicatedServer.zip",
-    "UpdateSourceTarget": "{{$FullBaseDir}}BepInEx/plugins",
+    "UpdateSourceTarget": "{{$FullBaseDir}}Temp",
     "OverwriteExistingFiles": true,
     "DeleteAfterExtract": true,
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "AtlyssDedicatedServer Flatten",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"set -e; DIR='{{$FullBaseDir}}BepInEx/plugins'; if [ -d \\\"$DIR\\\" ]; then shopt -s dotglob; for d in \\\"$DIR\\\"/*/; do if [ -d \\\"$d\\\" ]; then mv \\\"$d\\\"* \\\"$DIR\\\"/ || true; rm -rf \\\"$d\\\"; fi; done; fi; echo 'Atlyss plugins normalized'\"",
-    "SkipOnFailure": false
-  },
-  {
-    "UpdateStageName": "AtlyssDedicatedServer Flatten",
+    "UpdateStageName": "AtlyssDedicatedServer Copy",
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
-    "UpdateSourceArgs": "-NoProfile -Command \" $dir='{{$FullBaseDir}}BepInEx\\plugins'; if (Test-Path $dir) { Get-ChildItem -Directory $dir | ForEach-Object { $src = $_.FullName; Get-ChildItem $src -Recurse -File | Move-Item -Destination $dir -Force; Remove-Item $src -Recurse -Force } }; Write-Output 'Atlyss plugins normalized'\"",
+    "UpdateSourceArgs": "-NoProfile -Command \"$src='{{$FullBaseDir}}Temp'; $dest='{{$FullBaseDir}}2768430\\BepInEx\\plugins\\AtlyssModding-AtlyssDedicatedServer'; if (Test-Path $src) { New-Item -ItemType Directory -Path $dest -Force | Out-Null; Move-Item -Path \"$src\\*\" -Destination $dest -Force -ErrorAction Stop; Remove-Item -Path $src -Recurse -Force; Write-Output 'Atlyss plugin installed' } else { Write-Error 'No extracted AtlyssDedicatedServer folder found'; exit 1 }\"",
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "Verify Atlyss Plugin",
+    "UpdateStageName": "AtlyssDedicatedServer Copy",
     "UpdateSourcePlatform": "Linux",
     "UpdateSource": "Executable",
     "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"if ls '{{$FullBaseDir}}BepInEx/plugins'/*.dll >/dev/null 2>&1; then echo 'Plugin DLL found'; else echo 'Plugin missing' >&2; exit 1; fi\"",
+    "UpdateSourceArgs": "-c \"DIR='{{$FullBaseDir}}2768430'; SRC=\"$DIR/Temp\"; DEST=\"$DIR/BepInEx/plugins/AtlyssModding-AtlyssDedicatedServer\"; if [ -d \"$SRC\" ]; then mkdir -p \"$DEST\"; cp -a \"$SRC/.\" \"$DEST/\"; rm -rf \"$SRC\"; echo 'Atlyss plugin installed'; else echo 'No extracted AtlyssDedicatedServer folder found' >&2; exit 1; fi\"",
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "Verify Atlyss Plugin",
+    "UpdateStageName": "Verify AtlyssDedicatedServer Plugin",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"if ls '{{$FullBaseDir}}2768430/BepInEx/plugins/AtlyssModding-AtlyssDedicatedServer'/*.dll >/dev/null 2>&1; then echo 'Plugin DLL found'; else echo 'Plugin missing' >&2; exit 1; fi\"",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Verify AtlyssDedicatedServer Plugin",
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
     "UpdateSourceData": "powershell.exe",
-    "UpdateSourceArgs": "-NoProfile -Command \" if (Get-ChildItem -Path '{{$FullBaseDir}}BepInEx\\plugins' -Filter '*.dll' -Recurse -ErrorAction SilentlyContinue) { Write-Output 'Plugin DLL found' } else { Write-Error 'Plugin missing' ; exit 1 }\"",
-    "SkipOnFailure": false
+    "UpdateSourceArgs": "-NoProfile -Command \" if (Get-ChildItem -Path '{{$FullBaseDir}}2768430\\BepInEx\\plugins\\AtlyssModding-AtlyssDedicatedServer' -Filter '*.dll' -Recurse -ErrorAction SilentlyContinue) { Write-Output 'Plugin DLL found' } else { Write-Error 'Plugin missing' ; exit 1 }\"",
+    "SkipOnFailure": false  
+  },
+  {
+    "UpdateStageName": "Cleanup Atlyss Temp",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "-c \"rm -rf '{{ $FullBaseDir }}2768430/AtlyssDedicatedServer_extracted' || true\"",
+    "SkipOnFailure": true
+  },
+  {
+    "UpdateStageName": "Cleanup Atlyss Temp",
+    "UpdateSourcePlatform": "Windows",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "powershell.exe",
+    "UpdateSourceArgs": "-NoProfile -Command \"$d='{{$FullBaseDir}}2768430\\AtlyssDedicatedServer_extracted'; if (Test-Path $d) { Remove-Item -Path $d -Recurse -Force; Write-Output 'temp removed' } else { Write-Output 'temp not found' }\"",
+    "SkipOnFailure": true  
   }
 ]
