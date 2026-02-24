@@ -127,16 +127,16 @@
   },
   {
     "DisplayName": "Totem Unlock Modifier",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_TotemUnlockMod",
     "InputType": "number",
     "DefaultValue": 2
   },
   {
     "DisplayName": "Rebirth Cost",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_RebirthCostMod",
     "InputType": "number",
     "DefaultValue": 15,
