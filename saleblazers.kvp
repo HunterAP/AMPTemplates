@@ -29,13 +29,13 @@ Meta.NoCommercialUsage=False
 Meta.ConfigVersion=1
 
 App.DisplayName=Saleblazers
-App.RootDir=Saleblazers
-App.BaseDirectory=.
-App.WorkingDir=Saleblazers
+App.RootDir=./saleblazers/
+App.BaseDirectory=./saleblazers/3099600/
+App.WorkingDir=3099600/
 
-App.ExecutableWin=Saleblazers.exe
+App.ExecutableWin=3099600\Saleblazers.exe
 App.ExecutableLinux=.proton/proton
-App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}Saleblazers/Saleblazers.exe"
+App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}3099600/Saleblazers.exe"
 
 # Use filename-only config per user preference; implementation will verify AppData/LocalLow redirection
 App.CommandLineArgs={{$PlatformArgs}} -headless -config "DedicatedServerConfig.json" {{$FormattedArgs}}
