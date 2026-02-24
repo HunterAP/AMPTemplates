@@ -58,9 +58,10 @@
     "DisplayName": "Welcome Message",
     "Category": "Saleblazers:stadia_controller",
     "Subcategory": "Server:dns:1",
-    "FieldName": "MessageConfig.AutoBroadcastMessages",
-    "InputType": "list",
-    "DefaultValue": ["Welcome to Saleblazers"]
+    "FieldName": "WelcomeMessage",
+    "InputType": "text",
+    "DefaultValue": "Welcome to Saleblazers",
+    "HelpText": "Single-line welcome message used as the first auto-broadcast message."
   },
 
   {

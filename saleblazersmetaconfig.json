@@ -1,9 +1,10 @@
-{
-  "ConfigFile": "LocalLow/Airstrafe Interactive/Saleblazers/DedicatedServerConfig.json",
-  "ConfigFormat": "JSON",
-  "AutoMap": true,
-  "TemplateFile": "saleblazers.DedicatedServerConfig.template.json",
-  "SettingMappings": [
+[
+  {
+    "ConfigFile": "LocalLow/Airstrafe Interactive/Saleblazers/DedicatedServerConfig.json",
+    "ConfigFormat": "JSON",
+    "AutoMap": true,
+    "TemplateFile": "saleblazers.DedicatedServerConfig.template.json",
+    "SettingMappings": [
     { "FieldName": "Lobby_Mode", "JsonPath": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Mode')].Value" },
     { "FieldName": "Lobby_Save", "JsonPath": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Save')].Value" },
     { "FieldName": "Lobby_Name", "JsonPath": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Name')].Value" },
@@ -87,6 +88,8 @@
     { "FieldName": "AreaPermissionConfig.ControllablePermissions", "JsonPath": "AreaPermissionConfig.ControllablePermissions" },
 
     { "FieldName": "MessageConfig.AutoBroadcastMessages", "JsonPath": "MessageConfig.AutoBroadcastMessages" }
-  ],
-  "Note": "SettingMappings map AMP fields to the JSON template placeholders. The engine will create or update the ConfigFile accordingly."
-}
+    ,{ "FieldName": "WelcomeMessage", "JsonPath": "MessageConfig.AutoBroadcastMessages[0]" }
+    ],
+    "Note": "SettingMappings map AMP fields to the JSON template placeholders. The engine will create or update the ConfigFile accordingly."
+  }
+]
