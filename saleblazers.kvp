@@ -1,5 +1,5 @@
-Meta.DisplayName=Saleblazers Dedicated Server
-Meta.Description=Saleblazers Dedicated Server template
+Meta.DisplayName=Saleblazers
+Meta.Description=Saleblazers Dedicated Server
 Meta.OS=Windows, Linux
 Meta.DisplayImageSource=steam:3099600
 Meta.AppConfigId=f2d8c9b1-7a4f-4e2b-9b6c-0a1d2e3f4b5c
@@ -39,12 +39,6 @@ App.ExecutableLinux=.proton/proton
 # Use filename-only config per user preference; implementation will verify AppData/LocalLow redirection
 App.CommandLineArgs={{$PlatformArgs}} -headless -config "DedicatedServerConfig.json" {{$FormattedArgs}}
 
-# Reserve two application port tokens (ports are declared in saleblazersports.json)
-App.ApplicationPorts=2
-
-App.SteamWorkshopDownloadLocation=
-App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}Saleblazers.exe"
-App.WindowsCommandLineArgs=
 App.UseLinuxIOREDIR=False
 App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}.steam/sdk64","SteamAppId":"3099600","STEAM_COMPAT_DATA_PATH":"{{$FullRootDir}}.proton/compatdata","STEAM_COMPAT_CLIENT_INSTALL_PATH":"{{$FullBaseDir}}.steam/steam","HOME":"{{$FullBaseDir}}","XDG_RUNTIME_DIR":"/tmp"}
 App.CommandLineParameterFormat=-{0}={1}
@@ -63,7 +57,7 @@ App.SupportsIPv6=False
 App.ApplicationIPBinding=0.0.0.0
 App.Ports=@IncludeJson[saleblazersports.json]
 App.AdminPortRef=0
-App.PrimaryApplicationPortRef=QueryPort
+App.PrimaryApplicationPortRef=ApplicationPort1
 App.UniversalSleepApplicationUDPPortRef=0
 App.UniversalSleepSteamQueryPortRef=0
 App.MaxUsers=32
