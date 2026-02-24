@@ -1,8 +1,8 @@
 [
   {
     "DisplayName": "Server - Name",
-    "Category": "Saleblazers:Server",
-    "Subcategory": "Server:General",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
     "FieldName": "Lobby_Name",
     "InputType": "text",
     "DefaultValue": "Saleblazers Server",
@@ -10,8 +10,8 @@
   },
   {
     "DisplayName": "Save Name",
-    "Category": "Saleblazers:Server",
-    "Subcategory": "Server:General",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
     "FieldName": "Lobby_SaveName",
     "InputType": "text",
     "DefaultValue": "DefaultSave",
@@ -19,8 +19,8 @@
   },
   {
     "DisplayName": "Max Players",
-    "Category": "Saleblazers:Server",
-    "Subcategory": "Server:General",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
     "FieldName": "Lobby_Capacity",
     "InputType": "number",
     "DefaultValue": 16,
@@ -30,8 +30,8 @@
   },
   {
     "DisplayName": "Server Password",
-    "Category": "Saleblazers:Server",
-    "Subcategory": "Server:General",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
     "FieldName": "Lobby_Password",
     "InputType": "text",
     "DefaultValue": "",
@@ -39,8 +39,8 @@
   },
   {
     "DisplayName": "Auto Save Interval (seconds)",
-    "Category": "Saleblazers:Server",
-    "Subcategory": "Server:General",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
     "FieldName": "AutoSaveIntervalSeconds",
     "InputType": "number",
     "DefaultValue": 600,
@@ -48,16 +48,16 @@
   },
   {
     "DisplayName": "Cloud Characters",
-    "Category": "Saleblazers:Server",
-    "Subcategory": "Server:General",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
     "FieldName": "Lobby_CloudCharacters",
     "InputType": "checkbox",
     "DefaultValue": false
   },
   {
     "DisplayName": "Welcome Message",
-    "Category": "Saleblazers:Server",
-    "Subcategory": "Server:General",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
     "FieldName": "MessageConfig.AutoBroadcastMessages",
     "InputType": "list",
     "DefaultValue": ["Welcome to Saleblazers"]
@@ -65,8 +65,8 @@
 
   {
     "DisplayName": "Game Options - Keep Items on Death",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_NoDeathboxDrop",
     "InputType": "checkbox",
     "DefaultValue": false,
@@ -74,16 +74,16 @@
   },
   {
     "DisplayName": "Pacifist Mode",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_PacifistMode",
     "InputType": "checkbox",
     "DefaultValue": false
   },
   {
     "DisplayName": "Enemy Damage Multiplier",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_EnemyDamageMod",
     "InputType": "number",
     "DefaultValue": 0.68,
@@ -92,8 +92,8 @@
   },
   {
     "DisplayName": "Player Damage Multiplier",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_PlayerDamageMod",
     "InputType": "number",
     "DefaultValue": 1.6,
@@ -102,24 +102,24 @@
   },
   {
     "DisplayName": "Hit Stun Modifier",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_HitStunModifier",
     "InputType": "number",
     "DefaultValue": 1.35
   },
   {
     "DisplayName": "Item Density Multiplier",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_ItemDensityMod",
     "InputType": "number",
     "DefaultValue": 0.5
   },
   {
     "DisplayName": "Player XP Gain Multiplier",
-    "Category": "Saleblazers:GameOptions",
-    "Subcategory": "Game:Options",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Gameplay:options:1",
     "FieldName": "Lobby_PlayerXPGainMod",
     "InputType": "number",
     "DefaultValue": 1
