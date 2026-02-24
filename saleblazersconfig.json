@@ -16,7 +16,21 @@
     "InputType": "text",
     "DefaultValue": "DefaultSave",
     "Required": true,
-    "HelpText": "Save file name (1-20 chars). Used as the lobby name in the server browser."
+    "Description": "Save file name (1-20 chars). Used as the lobby name in the server browser."
+  },
+  {
+    "DisplayName": "Map Selection",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
+    "FieldName": "Lobby_Map",
+    "InputType": "enum",
+    "ParamFieldName": "Lobby_Map",
+    "DefaultValue": "1",
+    "Description": "Select map: 0=The Island, 1=Tutorial.",
+    "EnumValues": {
+      "0": "The Island",
+      "1": "Tutorial"
+    }
   },
   {
     "DisplayName": "Max Players",
@@ -28,7 +42,7 @@
     "Required": true,
     "Min": 1,
     "Max": 20,
-    "HelpText": "Maximum players allowed on the server (1-20). Note: counts >8 have a known temporary issue."
+    "Description": "Maximum players allowed on the server (1-20). Note: counts >8 have a known temporary issue."
   },
   {
     "DisplayName": "Server Password",
@@ -47,7 +61,7 @@
     "InputType": "number",
     "DefaultValue": 600,
     "Required": true,
-    "HelpText": "Interval in seconds between automatic server saves."
+    "Description": "Interval in seconds between automatic server saves."
   },
   {
     "DisplayName": "Cloud Characters",
@@ -56,26 +70,60 @@
     "FieldName": "Lobby_CloudCharacters",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, players use Steam Cloud characters saved to their accounts; False forces server-local character saves."
+    "Description": "If True, players use Steam Cloud characters saved to their accounts; False forces server-local character saves."
   },
   {
     "DisplayName": "Welcome Message",
     "Category": "Saleblazers:stadia_controller",
     "Subcategory": "Server:dns:1",
-    "FieldName": "WelcomeMessage",
-    "InputType": "text",
-    "DefaultValue": "Welcome to Saleblazers!",
-    "HelpText": "Single-line welcome message used as the first auto-broadcast message."
+    "Description": "List of auto-broadcast messages shown on join; the first message is the welcome message.",
+    "FieldName": "AutoBroadcastMessages",
+    "InputType": "list",
+    "ParamFieldName": "MessageConfig.AutoBroadcastMessages",
+    "DefaultValue": "[\"Welcome to Saleblazers!\"]",
+    "Special": "array:text",
+    "EnumValues": {}
+  },
+  {
+    "DisplayName": "Server Admin Steam IDs",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
+    "Description": "List of server admin Steam64 IDs (one per line). Use Steam64 from https://steamid.io/.",
+    "Keywords": "server,admins,AdminSteamIDs",
+    "FieldName": "AdminSteamIDs",
+    "InputType": "list",
+    "ParamFieldName": "AdminConfig.AdminSteamIDs",
+    "DefaultValue": "[]",
+    "Special": "array:text",
+    "EnumValues": {}
+  },
+  {
+    "DisplayName": "World Difficulty",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_Difficulty",
+    "InputType": "enum",
+    "ParamFieldName": "Lobby_Difficulty",
+    "DefaultValue": "2",
+    "Description": "Overally world difficulty. Note: many other gameplay settings override this.",
+    "EnumValues": {
+      "0": "Peaceful",
+      "1": "Easy",
+      "2": "Normal",
+      "3": "Hard",
+      "4": "Veteran Shopkeeper",
+      "5": "Hardcore Airstrafer"
+    }
   },
 
   {
-    "DisplayName": "Game Options - Keep Items on Death",
+    "DisplayName": "Keep Items on Death",
     "Category": "Saleblazers:stadia_controller",
     "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_NoDeathboxDrop",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "Set to True to prevent item drops on death (Keep Items). Note: permissions require manual config if enabled."
+    "Description": "Set to True to prevent item drops on death (keep items). Examples: Peaceful=True, Normal=False, Hardcore=False. Note: enabling may require permission tweaks."
   },
   {
     "DisplayName": "Pacifist Mode",
@@ -84,7 +132,7 @@
     "FieldName": "Lobby_PacifistMode",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, enemies won't attack players unless the player first attacks."
+    "Description": "If True, enemies won't attack unless provoked. Examples: Peaceful=True (on), Normal=False, Hardcore=False. Use for safer exploration."
   },
   {
     "DisplayName": "Enemy Damage Multiplier",
@@ -95,7 +143,7 @@
     "DefaultValue": 0.68,
     "Min": 0.1,
     "Max": 5,
-    "HelpText": "Multiplier applied to enemy damage output."
+    "Description": "Multiplier applied to enemy damage output. Examples: Peaceful=0.4, Normal=0.68, Hardcore=2.5. Higher = stronger enemies."
   },
   {
     "DisplayName": "Player Damage Multiplier",
@@ -106,7 +154,7 @@
     "DefaultValue": 1.6,
     "Min": 0.1,
     "Max": 5,
-    "HelpText": "Multiplier applied to player damage output."
+    "Description": "Multiplier applied to player damage output. Examples: Peaceful=3 (player deals more damage), Normal=1.6, Hardcore=0.7 (weaker player damage)."
   },
   {
     "DisplayName": "Hit Stun Modifier",
@@ -115,7 +163,7 @@
     "FieldName": "Lobby_HitStunModifier",
     "InputType": "number",
     "DefaultValue": 1.35,
-    "HelpText": "Multiplier for hit stun duration caused by player attacks."
+    "Description": "Multiplier for hit stun duration. Examples: Peaceful=3 (longer stun), Normal=1.35, Hardcore=1.35. Higher values increase crowd control."
   },
   {
     "DisplayName": "Item Density Multiplier",
@@ -124,7 +172,7 @@
     "FieldName": "Lobby_ItemDensityMod",
     "InputType": "number",
     "DefaultValue": 0.5,
-    "HelpText": "Controls how many items spawn in containers and the world."
+    "Description": "Controls item spawn density. Examples: Peaceful=1 (more items), Normal=0.5, Hardcore=0.25 (fewer items, scarcer resources)."
   },
   {
     "DisplayName": "Player XP Gain Multiplier",
@@ -133,7 +181,7 @@
     "FieldName": "Lobby_PlayerXPGainMod",
     "InputType": "number",
     "DefaultValue": 1,
-    "HelpText": "Multiplier for player experience gain and leveling speed."
+    "Description": "Multiplier for XP gain. Examples: Peaceful=1.25 (faster leveling), Normal=1, Hardcore=0.75 (slower leveling)."
   },
   {
     "DisplayName": "Totem Unlock Modifier",
@@ -142,7 +190,7 @@
     "FieldName": "Lobby_TotemUnlockMod",
     "InputType": "number",
     "DefaultValue": 2,
-    "HelpText": "Multiplier or toggle that affects teleportation totem unlock costs."
+    "Description": "Affects totem unlock progression/costs. Examples: Peaceful=0 (easy/unlocked), Normal=2, Hardcore=10 (harder to unlock)."
   },
   {
     "DisplayName": "Rebirth Cost",
@@ -153,7 +201,7 @@
     "DefaultValue": 15,
     "Min": 0,
     "Max": 100,
-    "HelpText": "Percent (0-100) of money lost on rebirth; lower = cheaper rebirth."
+    "Description": "Percent of money lost on rebirth (0-100). Examples: Peaceful=0 (no cost), Normal=15, Hardcore=100 (full cost)."
   },
   {
     "DisplayName": "Individual Map Discovery Progress",
@@ -162,7 +210,7 @@
     "FieldName": "Lobby_LocalMapDiscovery",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, players must individually explore the map to clear fog of war. False shares discovery across the team."
+    "Description": "If True, players discover map individually. Examples: Peaceful=False (shared discovery), Normal=False, Hardcore=True (individual discovery)."
   },
   {
     "DisplayName": "Peaceful Shop (Night)",
@@ -171,7 +219,7 @@
     "FieldName": "Lobby_PeacefulNight",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, shop-adjacent ghouls at night are disabled; normal world enemies remain."
+    "Description": "If True, hostile shop encounters at night are disabled. Examples: Peaceful=True, Normal=False, Hardcore=False. Makes nights less dangerous near shops."
   },
   {
     "DisplayName": "Invincible Shop Items",
@@ -180,18 +228,21 @@
     "FieldName": "Lobby_InvincibleShop",
     "InputType": "checkbox",
     "DefaultValue": true,
-    "HelpText": "If True, items placed inside of shops cannot be damaged."
+    "Description": "If True, shop items cannot be damaged or stolen. Examples: Peaceful=True, Normal=True, Hardcore=False. Protects player shops on easier modes."
   },
   {
-    "DisplayName": "Shop Difficulty",
+    "DisplayName": "Shop Loss",
     "Category": "Saleblazers:stadia_controller",
     "Subcategory": "Shopkeeping:shop:3",
     "FieldName": "Lobby_ShopDifficulty",
-    "InputType": "number",
-    "DefaultValue": 1,
-    "Min": 0,
-    "Max": 5,
-    "HelpText": "Adjusts shop-related challenge mechanics (loss, penalties, etc.)."
+    "InputType": "enum",
+    "ParamFieldName": "Lobby_ShopDifficulty",
+    "DefaultValue": "1",
+    "Description": "Turning this on will enable the Island government to temporarily disable shops that have low customer ratings and require an in-game fee to re-enable them.",
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
   },
   {
     "DisplayName": "Shop EXP Gain Multiplier",
@@ -200,7 +251,7 @@
     "FieldName": "Lobby_ShopXPGainMod",
     "InputType": "number",
     "DefaultValue": 1,
-    "HelpText": "Multiplier for shop EXP gained through sales."
+    "Description": "Multiplier for shop EXP from sales. Examples: Peaceful=1.5, Normal=1, Hardcore=0.5. Affects progression through shop mechanics."
   },
   {
     "DisplayName": "Customer Budget Multiplier",
@@ -209,7 +260,7 @@
     "FieldName": "Lobby_CustomerBudgetMod",
     "InputType": "number",
     "DefaultValue": 1,
-    "HelpText": "Multiplier for customer buying power / budgets."
+    "Description": "Multiplier for customer budgets. Examples: Peaceful=2 (richer customers), Normal=1, Hardcore=0.5 (poorer customers)."
   },
   {
     "DisplayName": "Customer Need Drain Multiplier",
@@ -218,7 +269,7 @@
     "FieldName": "Lobby_CustomerNeedMod",
     "InputType": "number",
     "DefaultValue": 1,
-    "HelpText": "Multiplier controlling how quickly customer needs are drained while shopping."
+    "Description": "Controls how fast customer needs drain. Examples: Peaceful=0.5, Normal=1, Hardcore=2. Higher = customers require more attention."
   },
   {
     "DisplayName": "Customer Rating Multiplier",
@@ -227,7 +278,7 @@
     "FieldName": "Lobby_CustomerRatingMod",
     "InputType": "number",
     "DefaultValue": 1,
-    "HelpText": "Multiplier that affects how harsh customers are when leaving reviews."
+    "Description": "Affects customer rating sensitivity. Examples: Peaceful=1.5 (forgiving), Normal=1, Hardcore=0.5 (harsher)."
   },
   {
     "DisplayName": "Hunger & Thirst Drain Rate Multiplier",
@@ -236,7 +287,7 @@
     "FieldName": "Lobby_HungerThirstRateMod",
     "InputType": "number",
     "DefaultValue": 1,
-    "HelpText": "Multiplier for how quickly hunger and thirst values deplete."
+    "Description": "Multiplier for hunger/thirst drain. Examples: Peaceful=0 (no drain), Normal=1, Hardcore=1.6 (faster drain)."
   },
   {
     "DisplayName": "Lethal Hunger & Thirst",
@@ -245,7 +296,7 @@
     "FieldName": "Lobby_LethalHungerThirst",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, players can die from low hunger or thirst; otherwise they drop to 1 HP."
+    "Description": "If True, players can die from starvation/thirst. Examples: Peaceful=False, Normal=False, Hardcore=True. Makes survival harsher on higher difficulty."
   },
   {
     "DisplayName": "Lethal Cold",
@@ -254,7 +305,7 @@
     "FieldName": "Lobby_LethalCold",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, environmental cold can kill players; otherwise they drop to 1 HP."
+    "Description": "If True, cold can kill players. Examples: Peaceful=False, Normal=False, Hardcore=True. Enable for harsher environmental survival."
   },
   {
     "DisplayName": "Building Integrity (Supports)",
@@ -263,7 +314,7 @@
     "FieldName": "Lobby_BuildingIntegrity",
     "InputType": "checkbox",
     "DefaultValue": true,
-    "HelpText": "If True, building integrity limits how high structures can be based on supports."
+    "Description": "If True, building support rules are enforced. Examples: Peaceful=False (relaxed), Normal=True, Hardcore=True (strict). Affects base-building difficulty."
   },
   {
     "DisplayName": "Research Cost Multiplier",
@@ -272,7 +323,7 @@
     "FieldName": "Lobby_ResearchCost",
     "InputType": "number",
     "DefaultValue": 1,
-    "HelpText": "Multiplier that determines the price of researching new recipes."
+    "Description": "Multiplier for research cost. Examples: Peaceful=0.5 (cheaper), Normal=1, Hardcore=5 (much more expensive)."
   },
   {
     "DisplayName": "Item Durability Enabled",
@@ -281,7 +332,7 @@
     "FieldName": "Lobby_ItemDurability",
     "InputType": "checkbox",
     "DefaultValue": true,
-    "HelpText": "If True, items lose durability and can break over time unless repaired."
+    "Description": "If True, items have durability. Examples: Peaceful=False (no durability), Normal=True, Hardcore=True. Increases maintenance on higher difficulty."
   },
   {
     "DisplayName": "Armor Durability on Death",
@@ -290,7 +341,7 @@
     "FieldName": "Lobby_ArmorDurability",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, equipped armor/clothing degrades on player death."
+    "Description": "If True, armor degrades on death. Examples: Peaceful=False, Normal=False, Hardcore=True. Makes deaths more punishing on Hardcore."
   },
   {
     "DisplayName": "Allow Friendly Fire",
@@ -299,34 +350,35 @@
     "FieldName": "Lobby_FriendlyFire",
     "InputType": "checkbox",
     "DefaultValue": false,
-    "HelpText": "If True, players can damage each other."
+    "Description": "If True, players can damage teammates. (Not difficulty-specific)"
   },
   {
     "DisplayName": "Random Player Spawning Mode",
     "Category": "Saleblazers:stadia_controller",
     "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_RandomPlayerSpawning",
-    "InputType": "number",
-    "DefaultValue": 0,
-    "HelpText": "0 = no random spawn (all spawn near Pop Pop), otherwise select spawn areas for randomized spawns."
-  },
-  {
-    "DisplayName": "World Difficulty",
-    "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Exploration and Combat:exploration:2",
-    "FieldName": "Lobby_Difficulty",
-    "InputType": "number",
-    "DefaultValue": 2,
-    "HelpText": "Overall world difficulty setting (affects enemy strength, progression)."
+    "InputType": "enum",
+    "ParamFieldName": "Lobby_RandomPlayerSpawning",
+    "DefaultValue": "0",
+    "Description": "Player spawn mode. 0 = Disabled. Other modes randomize spawn selection.",
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Random"
+    }
   },
   {
     "DisplayName": "Invasion Mode",
     "Category": "Saleblazers:stadia_controller",
     "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_InvasionMode",
-    "InputType": "number",
-    "DefaultValue": 0,
-    "HelpText": "Toggle or select invasion-related modes (0 = disabled)."
+    "InputType": "enum",
+    "ParamFieldName": "Lobby_InvasionMode",
+    "DefaultValue": "0",
+    "Description": "Invasion mode selector. 0 = Disabled.",
+    "EnumValues": {
+      "0": "Disabled",
+      "1": "Enabled"
+    }
   },
   {
     "DisplayName": "Proton GE Release Version (Linux)",
