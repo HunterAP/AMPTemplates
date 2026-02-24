@@ -8,19 +8,10 @@
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "Saves Directory Creation (Windows)",
-    "UpdateSourcePlatform": "Windows",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "cmd.exe",
-    "UpdateSourceArgs": "/C mkdir \"%UserProfile%\\AppData\\LocalLow\\Airstrafe Interactive\\Saleblazers\" > NUL 2>&1 & mkdir \"{{$FullBaseDir}}LocalLow\" > NUL 2>&1 & rd /S /Q \"{{$FullBaseDir}}LocalLow\\Airstrafe Interactive\\Saleblazers\" > NUL 2>&1 & mklink /J \"{{$FullBaseDir}}LocalLow\\Airstrafe Interactive\\Saleblazers\" \"%UserProfile%\\AppData\\LocalLow\\Airstrafe Interactive\\Saleblazers\" > NUL 2>&1",
-    "SkipOnFailure": false
-  },
-  {
-    "UpdateStageName": "Saves Directory Creation (Linux)",
-    "UpdateSourcePlatform": "Linux",
-    "UpdateSource": "Executable",
-    "UpdateSourceData": "/bin/bash",
-    "UpdateSourceArgs": "-c \"mkdir -p \\\"{{$FullRootDir}}.wine/drive_c/users/amp/AppData/LocalLow/Airstrafe Interactive/Saleblazers\\\" >/dev/null 2>&1; cd saleblazers/3099600 && ln -sf \\\"../.wine/drive_c/users/amp/AppData/LocalLow/Airstrafe Interactive/Saleblazers\\\" ./ >/dev/null 2>&1\"",
+    "UpdateStageName": "Create Config Directory",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "CreateDirectory",
+    "UpdateSourceArgs": "{{$FullBaseDir}}Saleblazers/Saved/Config/WindowsServer",
     "SkipOnFailure": false
   },
   {
@@ -28,8 +19,8 @@
     "UpdateSourcePlatform": "All",
     "UpdateSource": "FetchURL",
     "UpdateSourceData": "https://raw.githubusercontent.com/HunterAP/AMPTemplates/dev/saleblazersdefaultconfig.json",
-    "UpdateSourceArgs": "saleblazersdefaultconfig.json",
-    "UpdateSourceTarget": "{{$FullBaseDir}}LocalLow/Airstrafe Interactive/Saleblazers",
+    "UpdateSourceArgs": "serverconfig.json",
+    "UpdateSourceTarget": "{{$FullBaseDir}}Saleblazers/Saved/Config/WindowsServer",
     "OverwriteExistingFiles": false,
     "SkipOnFailure": false
   },

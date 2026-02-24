@@ -1,9 +1,9 @@
 
 [
   {
-    "ConfigFile": "LocalLow/Airstrafe Interactive/Saleblazers/saleblazersdefaultconfig.json",
+    "ConfigFile": "{{$FullBaseDir}}Saleblazers/Saved/Config/WindowsServer/serverconfig.json",
     "ConfigType": "json",
     "AutoMap": true,
-    "TemplateFile": "saleblazersdefaultconfig.json"
+    "Importable": true
   }
 ]
