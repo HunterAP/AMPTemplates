@@ -31,16 +31,17 @@ Meta.ConfigVersion=1
 App.DisplayName=Saleblazers
 App.RootDir=Saleblazers
 App.BaseDirectory=.
-App.WorkingDir=.
+App.WorkingDir=Saleblazers
 
 App.ExecutableWin=Saleblazers.exe
 App.ExecutableLinux=.proton/proton
+App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}Saleblazers/Saleblazers.exe"
 
 # Use filename-only config per user preference; implementation will verify AppData/LocalLow redirection
 App.CommandLineArgs={{$PlatformArgs}} -headless -config "DedicatedServerConfig.json" {{$FormattedArgs}}
 
 App.UseLinuxIOREDIR=False
-App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}.steam/sdk64","SteamAppId":"3099600","STEAM_COMPAT_DATA_PATH":"{{$FullRootDir}}.proton/compatdata","STEAM_COMPAT_CLIENT_INSTALL_PATH":"{{$FullBaseDir}}.steam/steam","HOME":"{{$FullBaseDir}}","XDG_RUNTIME_DIR":"/tmp"}
+App.EnvironmentVariables={"SteamAppId":"3099600","STEAM_COMPAT_DATA_PATH":"{{$FullRootDir}}.proton/compatdata","STEAM_COMPAT_CLIENT_INSTALL_PATH":"{{$FullBaseDir}}.steam/steam","HOME":"{{$FullBaseDir}}","XDG_RUNTIME_DIR":"/tmp"}
 App.CommandLineParameterFormat=-{0}={1}
 App.CommandLineParameterDelimiter= 
 App.ExitMethod=OS_CLOSE
