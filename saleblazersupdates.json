@@ -18,7 +18,7 @@
     "UpdateStageName": "Create Default DedicatedServerConfig",
     "UpdateSourcePlatform": "All",
     "UpdateSource": "FetchURL",
-    "UpdateSourceData": "https://raw.githubusercontent.com/HunterAP/AMPTemplates/dev/AMPTemplates/saleblazersdefaultconfig.json",
+    "UpdateSourceData": "https://raw.githubusercontent.com/HunterAP/AMPTemplates/dev/saleblazersdefaultconfig.json",
     "UpdateSourceArgs": "saleblazersdefaultconfig.json",
     "UpdateSourceTarget": "{{$FullBaseDir}}LocalLow/Airstrafe Interactive/Saleblazers",
     "OverwriteExistingFiles": false,
