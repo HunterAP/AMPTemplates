@@ -9,6 +9,18 @@
     "Required": true
   },
   {
+    "DisplayName": "Game Port (internal)",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
+    "FieldName": "$ApplicationPort1",
+    "InputType": "number",
+    "Hidden": true,
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "LoginConfig.HostingPort",
+    "DefaultValue": -2,
+    "EnumValues": {}
+  },
+  {
     "DisplayName": "Save Name",
     "Category": "Saleblazers:stadia_controller",
     "Subcategory": "Server:dns:1",
@@ -52,6 +64,16 @@
     "InputType": "text",
     "DefaultValue": "",
     "Required": false
+  },
+  {
+    "DisplayName": "UPnP Port Forwarding",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Server:dns:1",
+    "Description": "If true, AMP will attempt UPnP mapping for the assigned port.",
+    "FieldName": "bUpnpPortForwarding",
+    "ParamFieldName": "LoginConfig.bUpnpPortForwarding",
+    "InputType": "checkbox",
+    "DefaultValue": false
   },
   {
     "DisplayName": "Auto Save Interval (seconds)",
