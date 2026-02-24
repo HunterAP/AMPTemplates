@@ -1,4 +1,31 @@
 Meta.DisplayName=Saleblazers Dedicated Server
+Meta.Description=Saleblazers Dedicated Server template
+Meta.OS=Windows, Linux
+Meta.DisplayImageSource=steam:3099600
+Meta.AppConfigId=f2d8c9b1-7a4f-4e2b-9b6c-0a1d2e3f4b5c
+Meta.AarchSupport=Unknown
+Meta.AppIsMultiIPAware=False
+Meta.Arch=x86_64
+Meta.Author=HunterAP
+Meta.URL=https://store.steampowered.com/app/3099600/
+Meta.ConfigManifest=saleblazersconfig.json
+Meta.MetaConfigManifest=saleblazersmetaconfig.json
+Meta.ConfigRoot=saleblazers.kvp
+Meta.ConfigReleaseState=NotSpecified
+Meta.MinAMPVersion=2.6.3.0
+Meta.SpecificDockerImage=cubecoders/ampbase:debian
+Meta.DockerRequired=False
+Meta.DockerBaseReadOnly=False
+Meta.ContainerPolicy=Supported
+Meta.ContainerPolicyReason=
+Meta.EndpointURIFormat=
+Meta.ExtraSetupStepsURI=
+Meta.ExtraContainerPackages=[]
+Meta.Prerequisites=[]
+Meta.ImportableExtensions=[]
+Meta.ReleaseNotes=
+Meta.BreakingReleaseNotes=
+Meta.NoCommercialUsage=False
 Meta.ConfigVersion=1
 
 App.DisplayName=Saleblazers
@@ -15,12 +42,69 @@ App.CommandLineArgs={{$PlatformArgs}} -headless -config "DedicatedServerConfig.j
 # Reserve two application port tokens (ports are declared in saleblazersports.json)
 App.ApplicationPorts=2
 
-; App.AppSettings describes default values surfaced to AMP UI
-App.AppSettings={
-  "Lobby_Name": "Saleblazers Server",
-  "Lobby_SaveName": "DefaultSave",
-  "Lobby_Capacity": 16,
-  "AutoSaveIntervalSeconds": 600,
-  "Lobby_CloudCharacters": false,
-  "MessageConfig.AutoBroadcastMessages": ["Welcome to Saleblazers"]
-}
+App.SteamWorkshopDownloadLocation=
+App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}Saleblazers.exe"
+App.WindowsCommandLineArgs=
+App.UseLinuxIOREDIR=False
+App.EnvironmentVariables={"LD_LIBRARY_PATH":"{{$FullBaseDir}}.steam/sdk64","SteamAppId":"3099600","STEAM_COMPAT_DATA_PATH":"{{$FullRootDir}}.proton/compatdata","STEAM_COMPAT_CLIENT_INSTALL_PATH":"{{$FullBaseDir}}.steam/steam","HOME":"{{$FullBaseDir}}","XDG_RUNTIME_DIR":"/tmp"}
+App.CommandLineParameterFormat=-{0}={1}
+App.CommandLineParameterDelimiter= 
+App.ExitMethod=OS_CLOSE
+App.ExitTimeout=30
+App.ExitString=stop
+App.ExitFile=app_exit.lck
+App.HasWriteableConsole=True
+App.HasReadableConsole=True
+App.UDPLogger=False
+App.SupportsLiveSettingsChanges=False
+App.LiveSettingChangeCommandFormat=set {0} "{1}"
+App.ForceIPBinding=False
+App.SupportsIPv6=False
+App.ApplicationIPBinding=0.0.0.0
+App.Ports=@IncludeJson[saleblazersports.json]
+App.AdminPortRef=0
+App.PrimaryApplicationPortRef=QueryPort
+App.UniversalSleepApplicationUDPPortRef=0
+App.UniversalSleepSteamQueryPortRef=0
+App.MaxUsers=32
+App.UseRandomAdminPassword=False
+App.PersistRandomPassword=False
+App.RemoteAdminPassword=
+App.AdminMethod=STDIO
+App.AdminLoginTransform=None
+App.LoginTransformPrefix=
+App.UpdateSources=@IncludeJson[saleblazersupdates.json]
+App.PreStartStages=[]
+App.UserActions=[]
+App.ForceUpdate=False
+App.ForceUpdateReason=
+App.Compatibility=None
+App.SteamUpdateAnonymousLogin=True
+App.SteamForceLoginPrompt=False
+App.RapidStartup=False
+App.SmartExcludeExemptions=[]
+App.DumpFullChildProcessTree=False
+App.MonitorChildProcessName=Saleblazers\.exe
+App.MonitorDirectChildOnly=False
+App.SupportsUniversalSleep=False
+App.WakeupMode=Any
+App.ApplicationReadyMode=RegexMatch
+App.TemplateMatchRegex={{(!?(?<Platform>Linux|Windows|All):)?(?<Value>\$?[\w]+)}}
+Console.FilterMatchRegex=
+Console.FilterMatchReplacement=
+Console.ThrowawayMessageRegex=
+Console.AppReadyRegex=
+Console.UserJoinRegex=
+Console.UserLeaveRegex=
+Console.UserChatRegex=
+Console.UpdateAvailableRegex=
+Console.MetricsRegex=
+Console.SuppressLogAtStart=False
+Console.ActivateLogRegex=
+Console.UserActions={}
+Limits.SleepMode=False
+Limits.SleepOnStart=False
+Limits.SleepDelayMinutes=5
+Limits.DozeDelay=2
+Limits.AutoRetryCount=2
+Limits.SleepStartThresholdSeconds=25
