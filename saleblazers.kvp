@@ -1,0 +1,26 @@
+Meta.DisplayName=Saleblazers Dedicated Server
+Meta.ConfigVersion=1
+
+App.DisplayName=Saleblazers
+App.RootDir=Saleblazers
+App.BaseDirectory=.
+App.WorkingDir=.
+
+App.ExecutableWin=Saleblazers.exe
+App.ExecutableLinux=.proton/proton
+
+# Use filename-only config per user preference; implementation will verify AppData/LocalLow redirection
+App.CommandLineArgs={{$PlatformArgs}} -headless -config "DedicatedServerConfig.json" {{$FormattedArgs}}
+
+# Reserve two application port tokens (ports are declared in saleblazersports.json)
+App.ApplicationPorts=2
+
+; App.AppSettings describes default values surfaced to AMP UI
+App.AppSettings={
+  "Lobby_Name": "Saleblazers Server",
+  "Lobby_SaveName": "DefaultSave",
+  "Lobby_Capacity": 16,
+  "AutoSaveIntervalSeconds": 600,
+  "Lobby_CloudCharacters": false,
+  "MessageConfig.AutoBroadcastMessages": ["Welcome to Saleblazers"]
+}

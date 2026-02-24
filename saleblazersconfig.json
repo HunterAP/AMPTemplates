@@ -1,0 +1,145 @@
+[
+  {
+    "DisplayName": "Server - Name",
+    "Category": "Saleblazers:Server",
+    "Subcategory": "Server:General",
+    "FieldName": "Lobby_Name",
+    "InputType": "text",
+    "DefaultValue": "Saleblazers Server",
+    "Required": true
+  },
+  {
+    "DisplayName": "Save Name",
+    "Category": "Saleblazers:Server",
+    "Subcategory": "Server:General",
+    "FieldName": "Lobby_SaveName",
+    "InputType": "text",
+    "DefaultValue": "DefaultSave",
+    "Required": true
+  },
+  {
+    "DisplayName": "Max Players",
+    "Category": "Saleblazers:Server",
+    "Subcategory": "Server:General",
+    "FieldName": "Lobby_Capacity",
+    "InputType": "number",
+    "DefaultValue": 16,
+    "Required": true,
+    "Min": 1,
+    "Max": 20
+  },
+  {
+    "DisplayName": "Server Password",
+    "Category": "Saleblazers:Server",
+    "Subcategory": "Server:General",
+    "FieldName": "Lobby_Password",
+    "InputType": "text",
+    "DefaultValue": "",
+    "Required": false
+  },
+  {
+    "DisplayName": "Auto Save Interval (seconds)",
+    "Category": "Saleblazers:Server",
+    "Subcategory": "Server:General",
+    "FieldName": "AutoSaveIntervalSeconds",
+    "InputType": "number",
+    "DefaultValue": 600,
+    "Required": true
+  },
+  {
+    "DisplayName": "Cloud Characters",
+    "Category": "Saleblazers:Server",
+    "Subcategory": "Server:General",
+    "FieldName": "Lobby_CloudCharacters",
+    "InputType": "checkbox",
+    "DefaultValue": false
+  },
+  {
+    "DisplayName": "Welcome Message",
+    "Category": "Saleblazers:Server",
+    "Subcategory": "Server:General",
+    "FieldName": "MessageConfig.AutoBroadcastMessages",
+    "InputType": "list",
+    "DefaultValue": ["Welcome to Saleblazers"]
+  },
+
+  {
+    "DisplayName": "Game Options - Keep Items on Death",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_NoDeathboxDrop",
+    "InputType": "checkbox",
+    "DefaultValue": false,
+    "HelpText": "Set to True to prevent item drops on death (Keep Items). Note: permissions require manual config if enabled."
+  },
+  {
+    "DisplayName": "Pacifist Mode",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_PacifistMode",
+    "InputType": "checkbox",
+    "DefaultValue": false
+  },
+  {
+    "DisplayName": "Enemy Damage Multiplier",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_EnemyDamageMod",
+    "InputType": "number",
+    "DefaultValue": 0.68,
+    "Min": 0.1,
+    "Max": 5
+  },
+  {
+    "DisplayName": "Player Damage Multiplier",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_PlayerDamageMod",
+    "InputType": "number",
+    "DefaultValue": 1.6,
+    "Min": 0.1,
+    "Max": 5
+  },
+  {
+    "DisplayName": "Hit Stun Modifier",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_HitStunModifier",
+    "InputType": "number",
+    "DefaultValue": 1.35
+  },
+  {
+    "DisplayName": "Item Density Multiplier",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_ItemDensityMod",
+    "InputType": "number",
+    "DefaultValue": 0.5
+  },
+  {
+    "DisplayName": "Player XP Gain Multiplier",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_PlayerXPGainMod",
+    "InputType": "number",
+    "DefaultValue": 1
+  },
+  {
+    "DisplayName": "Totem Unlock Modifier",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_TotemUnlockMod",
+    "InputType": "number",
+    "DefaultValue": 2
+  },
+  {
+    "DisplayName": "Rebirth Cost",
+    "Category": "Saleblazers:GameOptions",
+    "Subcategory": "Game:Options",
+    "FieldName": "Lobby_RebirthCostMod",
+    "InputType": "number",
+    "DefaultValue": 15,
+    "Min": 0,
+    "Max": 100
+  }
+]

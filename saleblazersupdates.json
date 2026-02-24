@@ -1,0 +1,21 @@
+[
+  {
+    "UpdateStageName": "Install Windows Dedicated Server via SteamCMD",
+    "UpdateSource": "SteamCMD",
+    "UpdateSourceData": {
+      "AppID": 3099600
+    },
+    "ForceDownloadPlatform": "Windows",
+    "SetExecutableFlag": true,
+    "UpdateSourcePlatform": "All"
+  },
+  {
+    "UpdateStageName": "Set Proton/Wine Helper (if Linux)",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": {
+      "URL": "",
+      "Target": ""
+    },
+    "SkipOnFailure": true
+  }
+]
