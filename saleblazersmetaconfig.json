@@ -3,7 +3,20 @@
   {
     "ConfigFile": "{{$FullBaseDir}}Saleblazers/Saved/Config/WindowsServer/serverconfig.json",
     "ConfigType": "json",
-    "AutoMap": true,
-    "Importable": true
+    "AutoMap": false,
+    "Importable": true,
+    "SettingMappings": {
+      "AutoSaveIntervalSeconds": "LobbyConfig.AutoSaveIntervalSeconds",
+      "bAdvertiseServer": "LobbyConfig.bAdvertiseServer",
+      "Lobby_Name": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Name')].Value",
+      "Lobby_Map": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Map')].Value",
+      "Lobby_Password": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Password')].Value",
+      "Lobby_Save": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Save')].Value",
+      "Lobby_SaveName": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_SaveName')].Value",
+      "Lobby_Capacity": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_Capacity')].Value",
+      "Lobby_FriendlyFire": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_FriendlyFire')].Value",
+      "Lobby_CloudCharacters": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_CloudCharacters')].Value",
+      "Lobby_NoDeathboxDrop": "LobbyConfig.SerializedOptions.Options[?(@.Key=='Lobby_NoDeathboxDrop')].Value"
+    }
   }
 ]
