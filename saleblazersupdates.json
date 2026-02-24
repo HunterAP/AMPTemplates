@@ -8,13 +8,6 @@
     "SkipOnFailure": false
   },
   {
-    "UpdateStageName": "Create Config Directory",
-    "UpdateSourcePlatform": "All",
-    "UpdateSource": "CreateDirectory",
-    "UpdateSourceArgs": "{{$FullBaseDir}}saleblazers/Config",
-    "SkipOnFailure": false
-  },
-  {
     "UpdateStageName": "Saves Directory Creation (Windows)",
     "UpdateSourcePlatform": "Windows",
     "UpdateSource": "Executable",
