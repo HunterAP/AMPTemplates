@@ -1,6 +1,4 @@
 [
-  { "Protocol": "UDP", "Port": 27015, "Ref": "ApplicationPort1" },
-  { "Protocol": "TCP", "Port": 27015, "Ref": "ApplicationPort1" },
-  { "Protocol": "UDP", "Port": 27016, "Ref": "ApplicationPort2" },
-  { "Protocol": "TCP", "Port": 27016, "Ref": "ApplicationPort2" }
+  { "Protocol": "Both", "Port": 27015, "Ref": "ApplicationPort1" },
+  { "Protocol": "Both", "Port": 27016, "Ref": "QueryPort" }
 ]
