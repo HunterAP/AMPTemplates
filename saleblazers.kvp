@@ -35,10 +35,9 @@ App.WorkingDir=3099600/Default
 
 App.ExecutableWin=3099600\Default\Saleblazers.exe
 App.ExecutableLinux=.proton/proton
-App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}Default\Saleblazers.exe"
-
-# Use filename-only config per user preference; implementation will verify AppData/LocalLow redirection
-App.CommandLineArgs={{$PlatformArgs}} -headless -config "{{$FullBaseDir}}Saleblazers/Saved/Config/WindowsServer/serverconfig.json" {{$FormattedArgs}}
+App.LinuxCommandLineArgs=runinprefix "{{$FullBaseDir}}Default/Saleblazers.exe"
+App.WindowsCommandLineArgs=
+App.CommandLineArgs={{$PlatformArgs}} -headless -config "{{$FullBaseDir}}Saleblazers/Saved/Config/WindowsServer/serverconfig.json"
 
 App.UseLinuxIOREDIR=False
 App.EnvironmentVariables={"SteamAppId":"3099600","STEAM_COMPAT_DATA_PATH":"{{$FullRootDir}}.proton/compatdata","STEAM_COMPAT_CLIENT_INSTALL_PATH":"{{$FullBaseDir}}.steam/steam","HOME":"{{$FullBaseDir}}","XDG_RUNTIME_DIR":"/tmp"}
