@@ -1,7 +1,7 @@
 
 [
   {
-    "ConfigFile": "LocalLow/Airstrafe Interactive/Saleblazers/DedicatedServerConfig.json",
+    "ConfigFile": "LocalLow/Airstrafe Interactive/Saleblazers/saleblazersdefaultconfig.json",
     "ConfigType": "json",
     "AutoMap": true,
     "TemplateFile": "saleblazersdefaultconfig.json"
