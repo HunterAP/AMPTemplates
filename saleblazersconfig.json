@@ -5,7 +5,7 @@
     "Subcategory": "Server:dns:1",
     "FieldName": "Lobby_Name",
     "InputType": "text",
-    "DefaultValue": "Saleblazers Server",
+    "DefaultValue": "Saleblazers Server - Powered by AMP",
     "Required": true
   },
   {
@@ -15,7 +15,8 @@
     "FieldName": "Lobby_SaveName",
     "InputType": "text",
     "DefaultValue": "DefaultSave",
-    "Required": true
+    "Required": true,
+    "HelpText": "Save file name (1-20 chars). Used as the lobby name in the server browser."
   },
   {
     "DisplayName": "Max Players",
@@ -26,7 +27,8 @@
     "DefaultValue": 16,
     "Required": true,
     "Min": 1,
-    "Max": 20
+    "Max": 20,
+    "HelpText": "Maximum players allowed on the server (1-20). Note: counts >8 have a known temporary issue."
   },
   {
     "DisplayName": "Server Password",
@@ -44,7 +46,8 @@
     "FieldName": "AutoSaveIntervalSeconds",
     "InputType": "number",
     "DefaultValue": 600,
-    "Required": true
+    "Required": true,
+    "HelpText": "Interval in seconds between automatic server saves."
   },
   {
     "DisplayName": "Cloud Characters",
@@ -52,7 +55,8 @@
     "Subcategory": "Server:dns:1",
     "FieldName": "Lobby_CloudCharacters",
     "InputType": "checkbox",
-    "DefaultValue": false
+    "DefaultValue": false,
+    "HelpText": "If True, players use Steam Cloud characters saved to their accounts; False forces server-local character saves."
   },
   {
     "DisplayName": "Welcome Message",
@@ -60,14 +64,14 @@
     "Subcategory": "Server:dns:1",
     "FieldName": "WelcomeMessage",
     "InputType": "text",
-    "DefaultValue": "Welcome to Saleblazers",
+    "DefaultValue": "Welcome to Saleblazers!",
     "HelpText": "Single-line welcome message used as the first auto-broadcast message."
   },
 
   {
     "DisplayName": "Game Options - Keep Items on Death",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_NoDeathboxDrop",
     "InputType": "checkbox",
     "DefaultValue": false,
@@ -76,72 +80,253 @@
   {
     "DisplayName": "Pacifist Mode",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_PacifistMode",
     "InputType": "checkbox",
-    "DefaultValue": false
+    "DefaultValue": false,
+    "HelpText": "If True, enemies won't attack players unless the player first attacks."
   },
   {
     "DisplayName": "Enemy Damage Multiplier",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_EnemyDamageMod",
     "InputType": "number",
     "DefaultValue": 0.68,
     "Min": 0.1,
-    "Max": 5
+    "Max": 5,
+    "HelpText": "Multiplier applied to enemy damage output."
   },
   {
     "DisplayName": "Player Damage Multiplier",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_PlayerDamageMod",
     "InputType": "number",
     "DefaultValue": 1.6,
     "Min": 0.1,
-    "Max": 5
+    "Max": 5,
+    "HelpText": "Multiplier applied to player damage output."
   },
   {
     "DisplayName": "Hit Stun Modifier",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_HitStunModifier",
     "InputType": "number",
-    "DefaultValue": 1.35
+    "DefaultValue": 1.35,
+    "HelpText": "Multiplier for hit stun duration caused by player attacks."
   },
   {
     "DisplayName": "Item Density Multiplier",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_ItemDensityMod",
     "InputType": "number",
-    "DefaultValue": 0.5
+    "DefaultValue": 0.5,
+    "HelpText": "Controls how many items spawn in containers and the world."
   },
   {
     "DisplayName": "Player XP Gain Multiplier",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_PlayerXPGainMod",
     "InputType": "number",
-    "DefaultValue": 1
+    "DefaultValue": 1,
+    "HelpText": "Multiplier for player experience gain and leveling speed."
   },
   {
     "DisplayName": "Totem Unlock Modifier",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_TotemUnlockMod",
     "InputType": "number",
-    "DefaultValue": 2
+    "DefaultValue": 2,
+    "HelpText": "Multiplier or toggle that affects teleportation totem unlock costs."
   },
   {
     "DisplayName": "Rebirth Cost",
     "Category": "Saleblazers:stadia_controller",
-    "Subcategory": "Gameplay:options:1",
+    "Subcategory": "Exploration and Combat:exploration:2",
     "FieldName": "Lobby_RebirthCostMod",
     "InputType": "number",
     "DefaultValue": 15,
     "Min": 0,
-    "Max": 100
+    "Max": 100,
+    "HelpText": "Percent (0-100) of money lost on rebirth; lower = cheaper rebirth."
+  },
+  {
+    "DisplayName": "Individual Map Discovery Progress",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_LocalMapDiscovery",
+    "InputType": "checkbox",
+    "DefaultValue": false,
+    "HelpText": "If True, players must individually explore the map to clear fog of war. False shares discovery across the team."
+  },
+  {
+    "DisplayName": "Peaceful Shop (Night)",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_PeacefulNight",
+    "InputType": "checkbox",
+    "DefaultValue": false,
+    "HelpText": "If True, shop-adjacent ghouls at night are disabled; normal world enemies remain."
+  },
+  {
+    "DisplayName": "Invincible Shop Items",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Shopkeeping:shop:3",
+    "FieldName": "Lobby_InvincibleShop",
+    "InputType": "checkbox",
+    "DefaultValue": true,
+    "HelpText": "If True, items placed inside of shops cannot be damaged."
+  },
+  {
+    "DisplayName": "Shop Difficulty",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Shopkeeping:shop:3",
+    "FieldName": "Lobby_ShopDifficulty",
+    "InputType": "number",
+    "DefaultValue": 1,
+    "Min": 0,
+    "Max": 5,
+    "HelpText": "Adjusts shop-related challenge mechanics (loss, penalties, etc.)."
+  },
+  {
+    "DisplayName": "Shop EXP Gain Multiplier",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Shopkeeping:shop:3",
+    "FieldName": "Lobby_ShopXPGainMod",
+    "InputType": "number",
+    "DefaultValue": 1,
+    "HelpText": "Multiplier for shop EXP gained through sales."
+  },
+  {
+    "DisplayName": "Customer Budget Multiplier",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Shopkeeping:shop:3",
+    "FieldName": "Lobby_CustomerBudgetMod",
+    "InputType": "number",
+    "DefaultValue": 1,
+    "HelpText": "Multiplier for customer buying power / budgets."
+  },
+  {
+    "DisplayName": "Customer Need Drain Multiplier",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Shopkeeping:shop:3",
+    "FieldName": "Lobby_CustomerNeedMod",
+    "InputType": "number",
+    "DefaultValue": 1,
+    "HelpText": "Multiplier controlling how quickly customer needs are drained while shopping."
+  },
+  {
+    "DisplayName": "Customer Rating Multiplier",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Shopkeeping:shop:3",
+    "FieldName": "Lobby_CustomerRatingMod",
+    "InputType": "number",
+    "DefaultValue": 1,
+    "HelpText": "Multiplier that affects how harsh customers are when leaving reviews."
+  },
+  {
+    "DisplayName": "Hunger & Thirst Drain Rate Multiplier",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Survival:survival:4",
+    "FieldName": "Lobby_HungerThirstRateMod",
+    "InputType": "number",
+    "DefaultValue": 1,
+    "HelpText": "Multiplier for how quickly hunger and thirst values deplete."
+  },
+  {
+    "DisplayName": "Lethal Hunger & Thirst",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Survival:survival:4",
+    "FieldName": "Lobby_LethalHungerThirst",
+    "InputType": "checkbox",
+    "DefaultValue": false,
+    "HelpText": "If True, players can die from low hunger or thirst; otherwise they drop to 1 HP."
+  },
+  {
+    "DisplayName": "Lethal Cold",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Survival:survival:4",
+    "FieldName": "Lobby_LethalCold",
+    "InputType": "checkbox",
+    "DefaultValue": false,
+    "HelpText": "If True, environmental cold can kill players; otherwise they drop to 1 HP."
+  },
+  {
+    "DisplayName": "Building Integrity (Supports)",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Survival:survival:4",
+    "FieldName": "Lobby_BuildingIntegrity",
+    "InputType": "checkbox",
+    "DefaultValue": true,
+    "HelpText": "If True, building integrity limits how high structures can be based on supports."
+  },
+  {
+    "DisplayName": "Research Cost Multiplier",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_ResearchCost",
+    "InputType": "number",
+    "DefaultValue": 1,
+    "HelpText": "Multiplier that determines the price of researching new recipes."
+  },
+  {
+    "DisplayName": "Item Durability Enabled",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Survival:survival:4",
+    "FieldName": "Lobby_ItemDurability",
+    "InputType": "checkbox",
+    "DefaultValue": true,
+    "HelpText": "If True, items lose durability and can break over time unless repaired."
+  },
+  {
+    "DisplayName": "Armor Durability on Death",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Survival:survival:4",
+    "FieldName": "Lobby_ArmorDurability",
+    "InputType": "checkbox",
+    "DefaultValue": false,
+    "HelpText": "If True, equipped armor/clothing degrades on player death."
+  },
+  {
+    "DisplayName": "Allow Friendly Fire",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_FriendlyFire",
+    "InputType": "checkbox",
+    "DefaultValue": false,
+    "HelpText": "If True, players can damage each other."
+  },
+  {
+    "DisplayName": "Random Player Spawning Mode",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_RandomPlayerSpawning",
+    "InputType": "number",
+    "DefaultValue": 0,
+    "HelpText": "0 = no random spawn (all spawn near Pop Pop), otherwise select spawn areas for randomized spawns."
+  },
+  {
+    "DisplayName": "World Difficulty",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_Difficulty",
+    "InputType": "number",
+    "DefaultValue": 2,
+    "HelpText": "Overall world difficulty setting (affects enemy strength, progression)."
+  },
+  {
+    "DisplayName": "Invasion Mode",
+    "Category": "Saleblazers:stadia_controller",
+    "Subcategory": "Exploration and Combat:exploration:2",
+    "FieldName": "Lobby_InvasionMode",
+    "InputType": "number",
+    "DefaultValue": 0,
+    "HelpText": "Toggle or select invasion-related modes (0 = disabled)."
   },
   {
     "DisplayName": "Proton GE Release Version (Linux)",
